@@ -45,7 +45,7 @@ public class JibIRC extends javax.swing.JFrame {
         this.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e){
                 if(socket != null){
-                    quit();dsfsafasdfsa
+                    quit();
                 }
             }
         });
