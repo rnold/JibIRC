@@ -62,13 +62,13 @@ public class JibIRC extends javax.swing.JFrame {
                 String[] split = message.split(":");
                 if(isJoinMessage(message)){
                     channels.add(channels.getSize(), split[2]); //adds to list
-                    jList1.setSelectedIndex(channels.getSize()-1);
-                    String welcomeMessage = "now talking in " + channels.get(jList1.getSelectedIndex()-1);
+                    channelList.setSelectedIndex(channels.getSize()-1);
+                    String welcomeMessage = "now talking in " + channels.get(channelList.getSelectedIndex()-1);
                     channelTexts.add(welcomeMessage);
-                    jTextArea1.setText(welcomeMessage);
+                    messageBox.setText(welcomeMessage);
                 }
             }else{
-                jTextArea1.append(message + "\n");
+                messageBox.append(message + "\n");
             }
         }
 
@@ -86,10 +86,10 @@ public class JibIRC extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        messageBox = new javax.swing.JTextArea();
+        inputBox = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        channelList = new javax.swing.JList();
         jPanel2 = new javax.swing.JPanel();
         textNick = new javax.swing.JTextField();
         textName = new javax.swing.JTextField();
@@ -99,23 +99,23 @@ public class JibIRC extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         textPort = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        connectButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        messageBox.setColumns(20);
+        messageBox.setRows(5);
+        jScrollPane1.setViewportView(messageBox);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        inputBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                inputBoxActionPerformed(evt);
             }
         });
 
         channels = new javax.swing.DefaultListModel();
-        jList1.setModel(channels);
-        jScrollPane2.setViewportView(jList1);
+        channelList.setModel(channels);
+        jScrollPane2.setViewportView(channelList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,7 +124,7 @@ public class JibIRC extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputBox, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -136,11 +136,11 @@ public class JibIRC extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         textNick.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +155,8 @@ public class JibIRC extends javax.swing.JFrame {
             }
         });
 
+        textServer.setText("6667");
+
         jLabel1.setText("Nick");
 
         jLabel2.setText("Real Name");
@@ -163,10 +165,10 @@ public class JibIRC extends javax.swing.JFrame {
 
         jLabel4.setText("Port");
 
-        jButton1.setText("Connect");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        connectButton.setText("Connect");
+        connectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                connectButtonActionPerformed(evt);
             }
         });
 
@@ -183,7 +185,7 @@ public class JibIRC extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(connectButton)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(textPort)
                         .addComponent(textServer)
@@ -211,7 +213,7 @@ public class JibIRC extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(textPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(connectButton)
                 .addContainerGap(141, Short.MAX_VALUE))
         );
 
@@ -220,31 +222,29 @@ public class JibIRC extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        String contents = jTextField1.getText();
+    private void inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBoxActionPerformed
+        String contents = inputBox.getText();
         if(isCommand(contents)){
             sendCommand(contents);
         }else{
             sendMessage(contents, activeChannel);
         }
-        jTextField1.setText("");
-        jTextArea1.append(contents + "\n");
+        inputBox.setText("");
+        messageBox.append(contents + "\n");
         getContentPane().repaint();
         
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_inputBoxActionPerformed
 
     private void textNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNickActionPerformed
         // TODO add your handling code here:
@@ -254,7 +254,7 @@ public class JibIRC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textNameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void connectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
         connect(textServer.getText(), Integer.parseInt(textPort.getText()), textNick.getText(), textName.getText());
         nick = textNick.getText();
         server = textServer.getText();
@@ -268,7 +268,7 @@ public class JibIRC extends javax.swing.JFrame {
             }
         });
         timer.start();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_connectButtonActionPerformed
 
     public boolean connect(String server, int port, String nick, String name){
         try{
@@ -335,18 +335,18 @@ public class JibIRC extends javax.swing.JFrame {
     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JList channelList;
+    private javax.swing.JButton connectButton;
+    private javax.swing.JTextField inputBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea messageBox;
     private javax.swing.JTextField textName;
     private javax.swing.JTextField textNick;
     private javax.swing.JTextField textPort;
