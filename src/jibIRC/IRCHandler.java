@@ -58,6 +58,7 @@ public class IRCHandler {
         try{
             if(in.ready()){
                 String what = in.readLine();
+                System.out.println(what);
                 return what;
             }else{
                 return null;

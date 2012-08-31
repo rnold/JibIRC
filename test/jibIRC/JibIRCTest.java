@@ -43,7 +43,7 @@ public class JibIRCTest {
     @Test
     public void testGetMessage() {
         System.out.println("getMessage");
-        JibIRC instance = new JibIRC();
+        JibIRC instance = new JibIRC(null);
         instance.getMessage();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
