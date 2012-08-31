@@ -16,7 +16,7 @@ public class TestClass {
     public static void main(String[] args){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JibIRC frame = new JibIRC();
+                JibIRC frame = new JibIRC(new IRCHandler());
                 frame.setSize(800, 600);
                 frame.setVisible(true);
             }

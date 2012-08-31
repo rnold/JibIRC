@@ -29,6 +29,7 @@ import javax.swing.DefaultListModel;
  */
 public class JibIRC extends javax.swing.JFrame {
     Timer timer;
+    IRCHandler handler;
 
     DefaultListModel channels;
     ArrayList<String> channelTexts;
@@ -36,43 +37,27 @@ public class JibIRC extends javax.swing.JFrame {
     String nick;
     String server;
 
-    Socket socket;
-    PrintWriter out;
-    BufferedReader in;
+
 
     /** Creates new form JibIRC */
-    public JibIRC() {
-        this.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent e){
-                if(socket != null){
-                    quit();
-                }
-            }
-        });
+    public JibIRC(IRCHandler handler) {
+        this.handler = handler;
+        this.addWindowListener(new Quitter());
         initComponents();
         channelTexts = new ArrayList<String>();
         getContentPane().remove(jPanel1);
 
     }
-
-    public void getMessage(){
-        String message = receiveMessage();
-        if(message != null){
-            if(isServerCommand(message)){
-                String[] split = message.split(":");
-                if(isJoinMessage(message)){
-                    channels.add(channels.getSize(), split[2]); //adds to list
-                    channelList.setSelectedIndex(channels.getSize()-1);
-                    String welcomeMessage = "now talking in " + channels.get(channelList.getSelectedIndex()-1);
-                    channelTexts.add(welcomeMessage);
-                    messageBox.setText(welcomeMessage);
-                }
-            }else{
-                messageBox.append(message + "\n");
+    
+    class Quitter extends WindowAdapter{
+        public void windowClosing(WindowEvent e){
+            if(handler.isInitialized()){
+                handler.quit();
             }
         }
-
     }
+
+
 
 
     /** This method is called from within the constructor to
@@ -155,8 +140,6 @@ public class JibIRC extends javax.swing.JFrame {
             }
         });
 
-        textServer.setText("6667");
-
         jLabel1.setText("Nick");
 
         jLabel2.setText("Real Name");
@@ -164,6 +147,8 @@ public class JibIRC extends javax.swing.JFrame {
         jLabel3.setText("Server");
 
         jLabel4.setText("Port");
+
+        textPort.setText("6667");
 
         connectButton.setText("Connect");
         connectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -188,9 +173,9 @@ public class JibIRC extends javax.swing.JFrame {
                     .addComponent(connectButton)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(textPort)
-                        .addComponent(textServer)
+                        .addComponent(textServer, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                         .addComponent(textName)
-                        .addComponent(textNick, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
+                        .addComponent(textNick)))
                 .addContainerGap(495, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -236,9 +221,9 @@ public class JibIRC extends javax.swing.JFrame {
     private void inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBoxActionPerformed
         String contents = inputBox.getText();
         if(isCommand(contents)){
-            sendCommand(contents);
+            handler.sendCommand(contents);
         }else{
-            sendMessage(contents, activeChannel);
+            handler.sendMessage(contents, activeChannel);
         }
         inputBox.setText("");
         messageBox.append(contents + "\n");
@@ -255,7 +240,7 @@ public class JibIRC extends javax.swing.JFrame {
     }//GEN-LAST:event_textNameActionPerformed
 
     private void connectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
-        connect(textServer.getText(), Integer.parseInt(textPort.getText()), textNick.getText(), textName.getText());
+        handler.connect(textServer.getText(), Integer.parseInt(textPort.getText()), textNick.getText(), textName.getText());
         nick = textNick.getText();
         server = textServer.getText();
         getContentPane().remove(jPanel2);
@@ -269,49 +254,21 @@ public class JibIRC extends javax.swing.JFrame {
         });
         timer.start();
     }//GEN-LAST:event_connectButtonActionPerformed
-
-    public boolean connect(String server, int port, String nick, String name){
-        try{
-            socket = new Socket(server, port);
-            out = new PrintWriter(socket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-            out.println("NICK " + nick);
-            out.println("USER " + nick + " " + nick + " " + server + " :" + name);
-            //out.println("PROTOCTL NAMESX");
-            return true;
-        }catch(UnknownHostException e){
-            return false;
-        }catch(IOException e){
-            return false;
-        }
-    }
-
-    public void sendMessage(String message, String user){
-        out.println("PRIVMSG " + user + " :" + message);
-    }
-
-    public void sendCommand(String command){
-        String blah = command.substring(1);
-        out.println(blah);
-
-    }
-
-    public void quit(){
-        out.println("QUIT :Insert reason here");
-    }
-
-    public String receiveMessage(){
-        try{
-            if(in.ready()){
-                String what = in.readLine();
-                return what;
+    public void getMessage(){
+        String message = handler.receiveMessage();
+        if(message != null){
+            if(isServerCommand(message)){
+                String[] split = message.split(":");
+                if(isJoinMessage(message)){
+                    channels.add(channels.getSize(), split[2]); //adds to list
+                    channelList.setSelectedIndex(channels.getSize()-1);
+                    String welcomeMessage = "now talking in " + channels.get(channelList.getSelectedIndex()-1);
+                    channelTexts.add(welcomeMessage);
+                    messageBox.setText(welcomeMessage);
+                }
             }else{
-                return null;
+                messageBox.append(message + "\n");
             }
-
-        }catch(IOException e){
-            return null;
         }
     }
 
@@ -330,6 +287,7 @@ public class JibIRC extends javax.swing.JFrame {
     public boolean isJoinMessage(String message){
         return message.contains("JOIN");
     }
+    
     /**
     * @param args the command line arguments
     */
