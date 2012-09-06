@@ -9,6 +9,7 @@ package jibIRC;
  * @author Welcome
  */
 public class ServerMessage {
+    String prefix;
     String message;
     String result;
     

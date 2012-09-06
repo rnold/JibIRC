@@ -40,129 +40,40 @@ public class JibIRCTest {
     /**
      * Test of getMessage method, of class JibIRC.
      */
-    @Test
-    public void testGetMessage() {
-        System.out.println("getMessage");
-        JibIRC instance = new JibIRC(null);
-        instance.getMessage();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of connect method, of class JibIRC.
      */
+    
     @Test
-    public void testConnect() {
-        System.out.println("connect");
-        String server = "";
-        int port = 0;
-        String nick = "";
-        String name = "";
-        IRCHandler instance = new IRCHandler();
-        boolean expResult = false;
-        boolean result = instance.connect(server, port, nick, name);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSuccessfulParsing() throws Exception{
+        String shouldMatch = ":uguysaremean!uguysaremean@relic-mua211.theedge.ca JOIN :#hibob";
+        ServerMessageParser.parse(shouldMatch);
+    }
+    
+    @Test
+    public void testUnsuccessfulParsing(){
+        try{
+        String shouldntMatch = ":asfdassadfas JOIN :#asdf";
+        ServerMessageParser.parse(shouldntMatch);
+        fail("exception should be thrown");
+        }catch(Exception e){
+            
+        }
+    }
+    
+    @Test
+    public void testParseGroups() throws Exception{
+        String shouldMatch = ":uguysaremean!uguysaremean@relic-mua211.theedge.ca JOIN :#hibob";
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertEquals("uguysaremean", parser.getPrefix());
+        assertEquals("JOIN", parser.getCommand());
+        assertEquals("#hibob", parser.getParameters());
     }
 
     /**
      * Test of sendMessage method, of class JibIRC.
      */
-    @Test
-    public void testSendMessage() {
-        System.out.println("sendMessage");
-        String message = "";
-        String user = "";
-        IRCHandler instance = new IRCHandler();
-        instance.sendMessage(message, user);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of sendCommand method, of class JibIRC.
-     */
-    @Test
-    public void testSendCommand() {
-        System.out.println("sendCommand");
-        String command = "";
-        IRCHandler instance = new IRCHandler();
-        instance.sendCommand(command);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of quit method, of class JibIRC.
-     */
-    @Test
-    public void testQuit() {
-        System.out.println("quit");
-        IRCHandler instance = new IRCHandler();
-        instance.quit();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of receiveMessage method, of class JibIRC.
-     */
-    @Test
-    public void testReceiveMessage() {
-        System.out.println("receiveMessage");
-        IRCHandler instance = new IRCHandler();
-        String expResult = "";
-        String result = instance.receiveMessage();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of isCommand method, of class JibIRC.
-     */
-    @Test
-    public void testIsCommand() {
-        System.out.println("isCommand");
-        String input = "";
-        JibIRC instance = new JibIRC(null);
-        boolean expResult = false;
-        boolean result = instance.isCommand(input);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of isServerCommand method, of class JibIRC.
-     */
-    @Test
-    public void testIsServerCommand() {
-        System.out.println("isServerCommand");
-        String input = "";
-        JibIRC instance = new JibIRC(null);
-        boolean expResult = false;
-        boolean result = instance.isServerCommand(input);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of isJoinMessage method, of class JibIRC.
-     */
-    @Test
-    public void testIsJoinMessage() {
-        System.out.println("isJoinMessage");
-        String message = "";
-        JibIRC instance = new JibIRC(null);
-        boolean expResult = false;
-        boolean result = instance.isJoinMessage(message);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
 }
