@@ -239,9 +239,18 @@ public class JibIRC extends javax.swing.JFrame {
         handler.connect(textServer.getText(), Integer.parseInt(textPort.getText()), textNick.getText(), textName.getText());
         nick = textNick.getText();
         server = textServer.getText();
+        switchPanels();
+        setUpTimer();
+        timer.start();
+    }//GEN-LAST:event_connectButtonActionPerformed
+   
+    private void switchPanels(){
         getContentPane().remove(loginPanel);
         getContentPane().add(channelPanel);
         getContentPane().repaint();
+    }
+    
+    private void setUpTimer(){
         timer = new Timer(30, new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 String message = handler.receiveMessage();
@@ -256,9 +265,7 @@ public class JibIRC extends javax.swing.JFrame {
 
             }
         });
-        timer.start();
-    }//GEN-LAST:event_connectButtonActionPerformed
-
+    }
 
     public void joinChannel(String channelName) {
         channels.add(channels.getSize(), channelName); //adds to list

@@ -26,7 +26,7 @@ public class ServerMessage {
         }
     }
     
-    public boolean isJoinMessage(String message) {
+    private boolean isJoinMessage(String message) {
         return message.contains("JOIN");
     }
     
