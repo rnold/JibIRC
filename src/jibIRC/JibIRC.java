@@ -20,7 +20,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import javax.swing.DefaultListModel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -31,10 +33,10 @@ public class JibIRC extends javax.swing.JFrame {
     Timer timer;
     IRCHandler handler;
     DefaultListModel channels;
-    ArrayList<String> channelTexts;
     String activeChannel;
     String nick;
     String server;
+    Hashtable<String, JTextArea> messageBoxes;
 
     /**
      * Creates new form JibIRC
@@ -43,6 +45,7 @@ public class JibIRC extends javax.swing.JFrame {
         this.handler = handler;
         this.addWindowListener(new Quitter());
         initComponents();
+        messageBoxes = new Hashtable<String, JTextArea>();
         getContentPane().remove(channelPanel);
 
     }
@@ -96,6 +99,11 @@ public class JibIRC extends javax.swing.JFrame {
 
         channels = new javax.swing.DefaultListModel();
         channelList.setModel(channels);
+        channelList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                channelListValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(channelList);
 
         javax.swing.GroupLayout channelPanelLayout = new javax.swing.GroupLayout(channelPanel);
@@ -222,7 +230,7 @@ public class JibIRC extends javax.swing.JFrame {
             handler.sendMessage(contents, activeChannel);
         }
         inputBox.setText("");
-        messageBox.append(contents + "\n");
+        messageBox.append(nick + ": " + contents + "\n");
         getContentPane().repaint();
 
     }//GEN-LAST:event_inputBoxActionPerformed
@@ -243,47 +251,60 @@ public class JibIRC extends javax.swing.JFrame {
         setUpTimer();
         timer.start();
     }//GEN-LAST:event_connectButtonActionPerformed
-   
-    private void switchPanels(){
+
+    private void channelListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_channelListValueChanged
+        activeChannel = (String) channels.get(channelList.getSelectedIndex());
+        messageBox = messageBoxes.get(activeChannel);
+        jScrollPane1.setViewportView(messageBox);
+    }//GEN-LAST:event_channelListValueChanged
+
+    private void switchPanels() {
         getContentPane().remove(loginPanel);
         getContentPane().add(channelPanel);
         getContentPane().repaint();
     }
-    
-    private void setUpTimer(){
+
+    private void setUpTimer() {
         timer = new Timer(30, new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e){
+            public void actionPerformed(java.awt.event.ActionEvent e) {
                 String message = handler.receiveMessage();
                 if (message != null) {
-                    ServerMessageParser parser = suppressRetardation(message);
-                    ServerMessage serverMessage = new ServerMessage(parser.getPrefix(), parser.getCommand(), parser.getParameters());
-                    if (serverMessage.isJoinNewChannel()) {
-                        joinChannel(serverMessage.getParameters());
-                    }else{
-                        messageBox.append(message + "\n");
+                    ServerMessageParser parser = ServerMessageParser.parse(message);
+                    if (parser.isWellFormed()) {
+                        ServerMessage serverMessage = new ServerMessage(parser.getPrefix(), parser.getCommand(), parser.getParameters());
+                        if (serverMessage.isJoinNewChannel(nick)) {
+                            joinChannel(serverMessage.getParameters());
+                        } else if (serverMessage.isChannelMessage()) {
+                            String command = serverMessage.getCommand();
+                            String parameters = serverMessage.getParameters();
+                            String user = serverMessage.getPrefix();
+                            addMessage(command.split(" ")[1], parameters, user);
+                        } else {
+                            messageBox.append(message + "\n");
+                        }
                     }
                 }
 
             }
         });
     }
-    
-    private ServerMessageParser suppressRetardation(String message){
-        ServerMessageParser parser;
-        try{
-            parser = ServerMessageParser.parse(message);
-        }catch(Exception e){
-            return null;
-        }
-        return parser;
-    }
 
     public void joinChannel(String channelName) {
+        JTextArea newMessageBox = new JTextArea();
+        newMessageBox.setColumns(20);
+        newMessageBox.setRows(5);
+        messageBoxes.put(channelName, newMessageBox);
+        messageBox = newMessageBox;
         channels.add(channels.getSize(), channelName); //adds to list
-        channelList.setSelectedIndex(channels.getSize());
+        channelList.setSelectedIndex(channels.getSize() - 1); // not working
+        jScrollPane1.setViewportView(messageBox);
         activeChannel = channelName;
-        String welcomeMessage = "now talking in " + channelName;
+        String welcomeMessage = "now talking in " + channelName + "\n";
         messageBox.setText(welcomeMessage);
+    }
+    
+    public void addMessage(String channel, String message, String user){
+        messageBoxes.get(channel).append(user + ": " + message + "\n");
     }
 
     public boolean isCommand(String input) {

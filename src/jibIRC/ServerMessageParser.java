@@ -15,16 +15,18 @@ public class ServerMessageParser {
     String prefix;
     String command;
     String parameters;
+    boolean wellFormed = true;
     
     private ServerMessageParser(){
     }
     
-    public static ServerMessageParser parse(String message) throws Exception{
+    public static ServerMessageParser parse(String message){
         ServerMessageParser parser = new ServerMessageParser();
-        Pattern p = Pattern.compile(":(\\S+)!\\S+ (\\w+) :(\\S+)");
+        Pattern p = Pattern.compile(":(\\S+)!\\S+ (.+) :(.+)");
         Matcher m = p.matcher(message);
         if(!m.matches()){
-            throw new Exception();
+            parser.wellFormed = false;
+            return parser;
         }
         parser.prefix = m.group(1);
         parser.command = m.group(2);
@@ -42,6 +44,10 @@ public class ServerMessageParser {
     
     public String getParameters(){
         return parameters;
+    }
+    
+    public boolean isWellFormed(){
+        return wellFormed;
     }
 
 }

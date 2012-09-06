@@ -46,20 +46,25 @@ public class JibIRCTest {
      */
     
     @Test
-    public void testSuccessfulParsing() throws Exception{
+    public void testSuccessfulParsing(){
         String shouldMatch = ":uguysaremean!uguysaremean@relic-mua211.theedge.ca JOIN :#hibob";
-        ServerMessageParser.parse(shouldMatch);
+        assertTrue(ServerMessageParser.parse(shouldMatch).isWellFormed());
+
+    }
+    
+    @Test
+    public void testMoreSuccessfulParsing(){
+        String shouldMatch = ":jibril13!jibril_13@relic-b5s.33u.108.216.IP PRIVMSG #hi :asdfa";
+        assertTrue(ServerMessageParser.parse(shouldMatch).isWellFormed());
     }
     
     @Test
     public void testUnsuccessfulParsing(){
-        try{
         String shouldntMatch = ":asfdassadfas JOIN :#asdf";
-        ServerMessageParser.parse(shouldntMatch);
-        fail("exception should be thrown");
-        }catch(Exception e){
-            
+        if(ServerMessageParser.parse(shouldntMatch).isWellFormed()){
+            fail();
         }
+
     }
     
     @Test
@@ -69,6 +74,14 @@ public class JibIRCTest {
         assertEquals("uguysaremean", parser.getPrefix());
         assertEquals("JOIN", parser.getCommand());
         assertEquals("#hibob", parser.getParameters());
+    }
+    
+    @Test
+    public void testIfChannelMessage(){
+        ServerMessage sMessage = new ServerMessage("Meathook", "PRIVMSG #GameReaper", "yup.. we know and we care!!");
+        if(!sMessage.isChannelMessage()){
+            fail();
+        }
     }
 
     /**

@@ -19,17 +19,20 @@ public class ServerMessage {
         this.parameters = parameters;
     }
     
-    public boolean isJoinNewChannel() {
-        if (isJoinMessage(command)) {
-            return true;
-        } else {
-            return false;
-            
-        }
+    public boolean isJoinNewChannel(String nick) {
+           return prefix.equals(nick) && command.equals("JOIN");
     }
     
-    private boolean isJoinMessage(String message) {
-        return message.contains("JOIN");
+    public boolean isChannelMessage(){
+        return command.matches("PRIVMSG #\\w+");
+    }
+    
+    public String getPrefix(){
+        return prefix;
+    }
+    
+    public String getCommand(){
+        return command;
     }
     
     public String getParameters(){
