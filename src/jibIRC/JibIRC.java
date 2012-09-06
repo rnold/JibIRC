@@ -252,12 +252,13 @@ public class JibIRC extends javax.swing.JFrame {
     
     private void setUpTimer(){
         timer = new Timer(30, new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
+            public void actionPerformed(java.awt.event.ActionEvent e){
                 String message = handler.receiveMessage();
                 if (message != null) {
-                    ServerMessage serverMessage = new ServerMessage(message);
+                    ServerMessageParser parser = suppressRetardation(message);
+                    ServerMessage serverMessage = new ServerMessage(parser.getPrefix(), parser.getCommand(), parser.getParameters());
                     if (serverMessage.isJoinNewChannel()) {
-                        joinChannel(serverMessage.getResult());
+                        joinChannel(serverMessage.getParameters());
                     }else{
                         messageBox.append(message + "\n");
                     }
@@ -265,6 +266,16 @@ public class JibIRC extends javax.swing.JFrame {
 
             }
         });
+    }
+    
+    private ServerMessageParser suppressRetardation(String message){
+        ServerMessageParser parser;
+        try{
+            parser = ServerMessageParser.parse(message);
+        }catch(Exception e){
+            return null;
+        }
+        return parser;
     }
 
     public void joinChannel(String channelName) {

@@ -10,16 +10,17 @@ package jibIRC;
  */
 public class ServerMessage {
     String prefix;
-    String message;
-    String result;
+    String command;
+    String parameters;
     
-    public ServerMessage(String message){
-        this.message = message;
+    public ServerMessage(String prefix, String command, String parameters){
+        this.prefix = prefix;
+        this.command = command;
+        this.parameters = parameters;
     }
     
     public boolean isJoinNewChannel() {
-        if (isJoinMessage(message)) {
-            result = message.split(" ")[2];
+        if (isJoinMessage(command)) {
             return true;
         } else {
             return false;
@@ -31,7 +32,7 @@ public class ServerMessage {
         return message.contains("JOIN");
     }
     
-    public String getResult(){
-        return result;
+    public String getParameters(){
+        return parameters;
     }
 }
