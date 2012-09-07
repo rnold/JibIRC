@@ -27,6 +27,14 @@ public class ServerMessage {
         return command.matches("PRIVMSG #\\w+");
     }
     
+    public boolean isPrivateMessage(String nick){
+        return command.matches("PRIVMSG " + nick);
+    }
+    
+    public boolean isPing(){
+        return command.equals("PING");
+    }
+    
     public String getPrefix(){
         return prefix;
     }

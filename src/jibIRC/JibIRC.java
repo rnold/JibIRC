@@ -234,7 +234,15 @@ public class JibIRC extends javax.swing.JFrame {
         getContentPane().repaint();
 
     }//GEN-LAST:event_inputBoxActionPerformed
-
+    
+    private boolean isCommand(String input) {
+        if (input.charAt(0) == '/') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     private void textNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNickActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textNickActionPerformed
@@ -248,7 +256,7 @@ public class JibIRC extends javax.swing.JFrame {
         nick = textNick.getText();
         server = textServer.getText();
         switchPanels();
-        setUpTimer();
+        timer = new Timer(30, new ServerMessageController(handler, this));
         timer.start();
     }//GEN-LAST:event_connectButtonActionPerformed
 
@@ -261,32 +269,7 @@ public class JibIRC extends javax.swing.JFrame {
     private void switchPanels() {
         getContentPane().remove(loginPanel);
         getContentPane().add(channelPanel);
-        getContentPane().repaint();
-    }
-
-    private void setUpTimer() {
-        timer = new Timer(30, new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                String message = handler.receiveMessage();
-                if (message != null) {
-                    ServerMessageParser parser = ServerMessageParser.parse(message);
-                    if (parser.isWellFormed()) {
-                        ServerMessage serverMessage = new ServerMessage(parser.getPrefix(), parser.getCommand(), parser.getParameters());
-                        if (serverMessage.isJoinNewChannel(nick)) {
-                            joinChannel(serverMessage.getParameters());
-                        } else if (serverMessage.isChannelMessage()) {
-                            String command = serverMessage.getCommand();
-                            String parameters = serverMessage.getParameters();
-                            String user = serverMessage.getPrefix();
-                            addMessage(command.split(" ")[1], parameters, user);
-                        } else {
-                            messageBox.append(message + "\n");
-                        }
-                    }
-                }
-
-            }
-        });
+        getContentPane().revalidate();
     }
 
     public void joinChannel(String channelName) {
@@ -306,14 +289,20 @@ public class JibIRC extends javax.swing.JFrame {
     public void addMessage(String channel, String message, String user){
         messageBoxes.get(channel).append(user + ": " + message + "\n");
     }
-
-    public boolean isCommand(String input) {
-        if (input.charAt(0) == '/') {
-            return true;
-        } else {
-            return false;
-        }
+    
+    public void textDump(String text){
+        messageBox.append(text);
     }
+    
+    public String getNick(){
+        return nick;
+    }
+    
+    public boolean isOpenChannel(String channelName){
+        return messageBoxes.get(channelName) != null;
+    }
+
+
 
 
     /**

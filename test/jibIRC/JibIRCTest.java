@@ -59,15 +59,6 @@ public class JibIRCTest {
     }
     
     @Test
-    public void testUnsuccessfulParsing(){
-        String shouldntMatch = ":asfdassadfas JOIN :#asdf";
-        if(ServerMessageParser.parse(shouldntMatch).isWellFormed()){
-            fail();
-        }
-
-    }
-    
-    @Test
     public void testParseGroups() throws Exception{
         String shouldMatch = ":uguysaremean!uguysaremean@relic-mua211.theedge.ca JOIN :#hibob";
         ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
@@ -82,6 +73,21 @@ public class JibIRCTest {
         if(!sMessage.isChannelMessage()){
             fail();
         }
+    }
+    
+    @Test
+    public void testPing(){
+        ServerMessage message = new ServerMessage("", "PING", "razorzedge.relic.net");
+        assertTrue(message.isPing());
+    }
+    
+    @Test
+    public void testPingMessage(){
+        ServerMessageParser parser = ServerMessageParser.parse("PING :razorzedge.relic.net");
+        assertTrue(parser.isWellFormed());
+        assertTrue(parser.getPrefix() == null);
+        assertTrue(parser.getCommand().equals("PING"));
+        assertTrue(parser.getParameters().equals("razorzedge.relic.net"));
     }
 
     /**
