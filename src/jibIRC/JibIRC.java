@@ -132,17 +132,21 @@ public class JibIRC extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        textNick.setText("JibTest");
         textNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textNickActionPerformed(evt);
             }
         });
 
+        textName.setText("rnold");
         textName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textNameActionPerformed(evt);
             }
         });
+
+        textServer.setText("irc.relic.net");
 
         jLabel1.setText("Nick");
 
@@ -261,9 +265,12 @@ public class JibIRC extends javax.swing.JFrame {
     }//GEN-LAST:event_connectButtonActionPerformed
 
     private void channelListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_channelListValueChanged
-        activeChannel = (String) channels.get(channelList.getSelectedIndex());
-        messageBox = messageBoxes.get(activeChannel);
-        jScrollPane1.setViewportView(messageBox);
+        int selectedIndex = channelList.getSelectedIndex();
+        if(selectedIndex >= 0){
+            activeChannel = (String) channels.get(channelList.getSelectedIndex());
+            messageBox = messageBoxes.get(activeChannel);
+            jScrollPane1.setViewportView(messageBox);
+        }
     }//GEN-LAST:event_channelListValueChanged
 
     private void switchPanels() {
@@ -280,14 +287,16 @@ public class JibIRC extends javax.swing.JFrame {
         messageBox = newMessageBox;
         channels.add(channels.getSize(), channelName);
         channelList.setSelectedIndex(channels.getSize() - 1);
-        jScrollPane1.setViewportView(messageBox);
-        activeChannel = channelName;
         String welcomeMessage = "now talking in " + channelName + "\n";
         messageBox.setText(welcomeMessage);
     }
     
     public void leaveChannel(String channelName) {
-        
+        messageBoxes.remove(channelName);
+        channels.removeElement(channelName);
+        if(channels.size() > 0 && channelList.getSelectedIndex() == -1){
+            channelList.setSelectedIndex(0);
+        }
     }
     
     public void addMessage(String channel, String message, String user){

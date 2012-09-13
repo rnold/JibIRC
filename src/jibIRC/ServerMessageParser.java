@@ -22,7 +22,7 @@ public class ServerMessageParser {
     
     public static ServerMessageParser parse(String message){
         ServerMessageParser parser = new ServerMessageParser();
-        Pattern p = Pattern.compile("(:(\\S+)!\\S+ )?([A-Z].*) :(.+)");
+        Pattern p = Pattern.compile("(:(\\S+)!\\S+ )?([A-Z].*) :?(.+)");
         Matcher m = p.matcher(message);
         if(!m.matches()){
             parser.wellFormed = false;

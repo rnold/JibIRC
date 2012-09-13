@@ -169,16 +169,25 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="textNick">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="JibTest"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textNickActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="rnold"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textNameActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textServer">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="irc.relic.net"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
