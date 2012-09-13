@@ -278,12 +278,16 @@ public class JibIRC extends javax.swing.JFrame {
         newMessageBox.setRows(5);
         messageBoxes.put(channelName, newMessageBox);
         messageBox = newMessageBox;
-        channels.add(channels.getSize(), channelName); //adds to list
-        channelList.setSelectedIndex(channels.getSize() - 1); // not working
+        channels.add(channels.getSize(), channelName);
+        channelList.setSelectedIndex(channels.getSize() - 1);
         jScrollPane1.setViewportView(messageBox);
         activeChannel = channelName;
         String welcomeMessage = "now talking in " + channelName + "\n";
         messageBox.setText(welcomeMessage);
+    }
+    
+    public void leaveChannel(String channelName) {
+        
     }
     
     public void addMessage(String channel, String message, String user){

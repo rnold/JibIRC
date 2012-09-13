@@ -35,6 +35,10 @@ public class ServerMessage {
         return command.equals("PING");
     }
     
+    public boolean isLeaveChannel(String nick){
+        return prefix.equals(nick) && command.equals("PART");
+    }
+    
     public String getPrefix(){
         return prefix;
     }

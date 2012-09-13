@@ -30,6 +30,8 @@ public class ServerMessageController implements ActionListener {
                     handler.sendCommand("/PONG " + serverMessage.getParameters());
                 } else if (serverMessage.isJoinNewChannel(irc.getNick())) {
                     irc.joinChannel(serverMessage.getParameters());
+                } else if (serverMessage.isLeaveChannel(irc.getNick())) {
+                    irc.leaveChannel(serverMessage.getParameters());
                 } else if (serverMessage.isChannelMessage()) {
                     String command = serverMessage.getCommand();
                     String parameters = serverMessage.getParameters();
