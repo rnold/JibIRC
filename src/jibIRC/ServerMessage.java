@@ -36,7 +36,11 @@ public class ServerMessage {
     }
     
     public boolean isLeaveChannel(String nick){
-        return prefix.equals(nick) && command.equals("PART");
+        return prefix.equals(nick) && command.startsWith("PART");
+    }
+    
+    public boolean isUserList(){
+        return command.equals("USERS");
     }
     
     public String getPrefix(){

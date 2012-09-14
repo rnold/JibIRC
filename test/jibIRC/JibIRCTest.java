@@ -48,7 +48,11 @@ public class JibIRCTest {
     @Test
     public void testSuccessfulParsing(){
         String shouldMatch = ":uguysaremean!uguysaremean@relic-mua211.theedge.ca JOIN :#hibob";
-        assertTrue(ServerMessageParser.parse(shouldMatch).isWellFormed());
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertTrue(parser.isWellFormed());
+        assertEquals(parser.getPrefix(), "uguysaremean");
+        assertEquals(parser.getCommand(), "JOIN");
+        assertEquals(parser.getParameters(), "#hibob");
 
     }
     
@@ -56,6 +60,32 @@ public class JibIRCTest {
     public void testMoreSuccessfulParsing(){
         String shouldMatch = ":jibril13!jibril_13@relic-b5s.33u.108.216.IP PRIVMSG #hi :asdfa";
         assertTrue(ServerMessageParser.parse(shouldMatch).isWellFormed());
+    }
+    
+    @Test
+    public void testUsers(){
+        ServerMessage message = new ServerMessage("", "USERS", "#GameReaper :+jibril @cookies");
+        assertTrue(message.isUserList());
+    }
+    
+    @Test
+    public void testParseUsers(){
+        String shouldMatch = ":critical.relic.net 353 JibTest = #GameReaper :+ubi_21 &GameReaper +SouL +Worseley %lionelione43 +aretha +iniquity @pegasus &alogwe JibTest %KG +supapaint +Metallica ~Mayhemisis +Taranis +inferna +tomt00001 +Guest10513 +driv +matrix12 +jibril13 +Zoen &Monochrome +Pyro +GrinningDoom +Kid @Zeus +enissay +scribblez +WiseBoy +WickedJester @Shrap +aeon2 @Apollo ~Anthrax +Meathook %aroldao";
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertTrue(parser.isWellFormed());
+        assertEquals(parser.getPrefix(), "");
+        assertEquals(parser.getCommand(), "USERS");
+        assertEquals(parser.getParameters(), "#GameReaper :+ubi_21 &GameReaper +SouL +Worseley %lionelione43 +aretha +iniquity @pegasus &alogwe JibTest %KG +supapaint +Metallica ~Mayhemisis +Taranis +inferna +tomt00001 +Guest10513 +driv +matrix12 +jibril13 +Zoen &Monochrome +Pyro +GrinningDoom +Kid @Zeus +enissay +scribblez +WiseBoy +WickedJester @Shrap +aeon2 @Apollo ~Anthrax +Meathook %aroldao");
+        
+    }
+    
+    @Test
+    public void testParsePart(){
+        String shouldMatch = ":JibTest!JibTest@relic-mua211.theedge.ca PART #hibob";
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertEquals("JibTest", parser.getPrefix());
+        assertEquals("PART #hibob", parser.getCommand());
+        assertEquals("", parser.getParameters());
     }
     
     @Test
@@ -76,6 +106,22 @@ public class JibIRCTest {
     }
     
     @Test
+    public void testIfJoinMessage(){
+        ServerMessage message = new ServerMessage("JibTest", "JOIN", "#hibob");
+        if(!message.isJoinNewChannel("JibTest")){
+            fail();
+        }
+    }
+    
+    @Test
+    public void testIfPartMessage(){
+        ServerMessage message = new ServerMessage("JibTest", "PART #hibob", "");
+        if(!message.isLeaveChannel("JibTest")){
+            fail();
+        }
+    }
+    
+    @Test
     public void testPing(){
         ServerMessage message = new ServerMessage("", "PING", "razorzedge.relic.net");
         assertTrue(message.isPing());
@@ -89,6 +135,23 @@ public class JibIRCTest {
         assertTrue(parser.getCommand().equals("PING"));
         assertTrue(parser.getParameters().equals("razorzedge.relic.net"));
     }
+    
+    @Test
+    public void testJoinChannel(){
+        String channelName = "#GameReaper";
+        JibIRC irc = new JibIRC(null);
+        irc.joinChannel(channelName);
+        if(irc.messageBoxes.get(channelName) == null){
+            fail();
+        }
+        if(irc.usersList.get(channelName) == null){
+            fail();
+        }
+        if(irc.channels.get(0) == null){
+            fail();
+        }
+    }
+    
 
     /**
      * Test of sendMessage method, of class JibIRC.

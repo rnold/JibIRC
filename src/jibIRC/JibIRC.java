@@ -289,6 +289,7 @@ public class JibIRC extends javax.swing.JFrame {
         getContentPane().remove(loginPanel);
         getContentPane().add(channelPanel);
         getContentPane().revalidate();
+        getContentPane().repaint();
     }
 
     public void joinChannel(String channelName) {
@@ -321,6 +322,12 @@ public class JibIRC extends javax.swing.JFrame {
         if(channels.size() > 0 && channelList.getSelectedIndex() == -1){
             channelList.setSelectedIndex(0);
         }
+    }
+    
+    public void addUser(String channelName, String username){
+        JList blah = usersList.get(channelName);
+        DefaultListModel model = (DefaultListModel)blah.getModel();
+        model.addElement(username);
     }
     
     public void addMessage(String channel, String message, String user){
