@@ -13,15 +13,9 @@ package jibIRC;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.Timer;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JTextArea;
 
 /**
@@ -33,10 +27,12 @@ public class JibIRC extends javax.swing.JFrame {
     Timer timer;
     IRCHandler handler;
     DefaultListModel channels;
+    DefaultListModel currentChannelUsers;
     String activeChannel;
     String nick;
     String server;
     Hashtable<String, JTextArea> messageBoxes;
+    Hashtable<String, JList> usersList;
 
     /**
      * Creates new form JibIRC
@@ -46,6 +42,7 @@ public class JibIRC extends javax.swing.JFrame {
         this.addWindowListener(new Quitter());
         initComponents();
         messageBoxes = new Hashtable<String, JTextArea>();
+        usersList = new Hashtable<String, JList>();
         getContentPane().remove(channelPanel);
 
     }
@@ -74,6 +71,8 @@ public class JibIRC extends javax.swing.JFrame {
         inputBox = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         channelList = new javax.swing.JList();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        users = new javax.swing.JList();
         loginPanel = new javax.swing.JPanel();
         textNick = new javax.swing.JTextField();
         textName = new javax.swing.JTextField();
@@ -106,6 +105,10 @@ public class JibIRC extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(channelList);
 
+        currentChannelUsers = new javax.swing.DefaultListModel();
+        users.setModel(currentChannelUsers);
+        jScrollPane3.setViewportView(users);
+
         javax.swing.GroupLayout channelPanelLayout = new javax.swing.GroupLayout(channelPanel);
         channelPanel.setLayout(channelPanelLayout);
         channelPanelLayout.setHorizontalGroup(
@@ -113,11 +116,13 @@ public class JibIRC extends javax.swing.JFrame {
             .addGroup(channelPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(channelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(inputBox, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, channelPanelLayout.createSequentialGroup()
+                    .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(channelPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         channelPanelLayout.setVerticalGroup(
@@ -126,10 +131,11 @@ public class JibIRC extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(channelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         textNick.setText("JibTest");
@@ -184,7 +190,7 @@ public class JibIRC extends javax.swing.JFrame {
                         .addComponent(textServer, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                         .addComponent(textName)
                         .addComponent(textNick)))
-                .addContainerGap(495, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,8 +274,14 @@ public class JibIRC extends javax.swing.JFrame {
         int selectedIndex = channelList.getSelectedIndex();
         if(selectedIndex >= 0){
             activeChannel = (String) channels.get(channelList.getSelectedIndex());
+            
+            //swap message boxes
             messageBox = messageBoxes.get(activeChannel);
             jScrollPane1.setViewportView(messageBox);
+            
+            //swap userLists
+            JList currentUserList = usersList.get(activeChannel);
+            jScrollPane3.setViewportView(currentUserList);
         }
     }//GEN-LAST:event_channelListValueChanged
 
@@ -280,18 +292,30 @@ public class JibIRC extends javax.swing.JFrame {
     }
 
     public void joinChannel(String channelName) {
+        //create message box
         JTextArea newMessageBox = new JTextArea();
         newMessageBox.setColumns(20);
         newMessageBox.setRows(5);
         messageBoxes.put(channelName, newMessageBox);
         messageBox = newMessageBox;
+        
+        //create user list
+        JList newUserList = new JList();
+        DefaultListModel newUsers = new DefaultListModel();
+        newUserList.setModel(newUsers);
+        usersList.put(channelName, newUserList);
+        users = newUserList;
+        
+        //add channel to list and switch to
         channels.add(channels.getSize(), channelName);
         channelList.setSelectedIndex(channels.getSize() - 1);
+        
         String welcomeMessage = "now talking in " + channelName + "\n";
         messageBox.setText(welcomeMessage);
     }
     
     public void leaveChannel(String channelName) {
+        usersList.remove(channelName);
         messageBoxes.remove(channelName);
         channels.removeElement(channelName);
         if(channels.size() > 0 && channelList.getSelectedIndex() == -1){
@@ -332,11 +356,13 @@ public class JibIRC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JTextArea messageBox;
     private javax.swing.JTextField textName;
     private javax.swing.JTextField textNick;
     private javax.swing.JTextField textPort;
     private javax.swing.JTextField textServer;
+    private javax.swing.JList users;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,21 +20,28 @@ public class ServerMessageParser {
     private ServerMessageParser(){
     }
     
-    public static ServerMessageParser parse(String message){
+    public static ServerMessageParser parse(String message) {
         ServerMessageParser parser = new ServerMessageParser();
         Pattern p = Pattern.compile("(:(\\S+)!\\S+ )?([A-Z].*) :?(.+)");
         Matcher m = p.matcher(message);
-        if(!m.matches()){
-            parser.wellFormed = false;
+        if (m.matches()) {
+            parser.prefix = m.group(2);
+            parser.command = m.group(3);
+            parser.parameters = m.group(4);
             return parser;
         }
-        parser.prefix = m.group(2);
-        parser.command = m.group(3);
-        parser.parameters = m.group(4);
+        
+        p = Pattern.compile("");
+        m = p.matcher(message);
+        if (m.matches()) {
+            
+        }
+        
+        parser.wellFormed = false;
         return parser;
     }
-    
-    public String getPrefix(){
+
+    public String getPrefix() {
         return prefix;
     }
     
