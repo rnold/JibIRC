@@ -98,6 +98,15 @@ public class JibIRCTest {
     }
     
     @Test
+    public void testParsePrivmsg(){
+        String shouldMatch = ":jibril13!jibril_13@relic-mua211.theedge.ca PRIVMSG JibTest :dude";
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertEquals("jibril13", parser.getPrefix());
+        assertEquals("PRIVMSG JibTest", parser.getCommand());
+        assertEquals("dude", parser.getParameters());
+    }
+    
+    @Test
     public void testIfChannelMessage(){
         ServerMessage sMessage = new ServerMessage("Meathook", "PRIVMSG #GameReaper", "yup.. we know and we care!!");
         if(!sMessage.isChannelMessage()){

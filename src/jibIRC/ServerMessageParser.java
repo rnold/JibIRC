@@ -44,8 +44,8 @@ public class ServerMessageParser {
             parser.parameters = m.group(4);
             return parser;
         }
-        //join
-        p = Pattern.compile(":(\\S+)!\\S+ (\\w+ #\\w+) :(.+)");
+        //join or privmsg
+        p = Pattern.compile(":(\\S+)!\\S+ (\\w+ #?\\w+) :(.+)");
         m = p.matcher(message);
         if (m.matches()) {
             parser.prefix = m.group(1);

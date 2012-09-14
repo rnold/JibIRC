@@ -233,25 +233,10 @@ public class JibIRC extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBoxActionPerformed
-        String contents = inputBox.getText();
-        if (isCommand(contents)) {
-            handler.sendCommand(contents);
-        } else {
-            handler.sendMessage(contents, activeChannel);
-        }
-        inputBox.setText("");
-        messageBox.append(nick + ": " + contents + "\n");
-        getContentPane().repaint();
 
     }//GEN-LAST:event_inputBoxActionPerformed
     
-    private boolean isCommand(String input) {
-        if (input.charAt(0) == '/') {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
     
     private void textNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNickActionPerformed
         // TODO add your handling code here:
@@ -267,6 +252,7 @@ public class JibIRC extends javax.swing.JFrame {
         server = textServer.getText();
         switchPanels();
         timer = new Timer(30, new ServerMessageController(handler, this));
+        inputBox.addActionListener(new InputMessageController(handler, this));
         timer.start();
     }//GEN-LAST:event_connectButtonActionPerformed
 
@@ -342,6 +328,21 @@ public class JibIRC extends javax.swing.JFrame {
         return nick;
     }
     
+    public String getActiveChannel(){
+        return activeChannel;
+    }
+    
+    public void putMessage(String message){
+        messageBox.append(message);
+    }
+    
+    public void resetInputBox(){
+        inputBox.setText("");
+    }
+    
+    public String getInput(){
+        return inputBox.getText();
+    }
     public boolean isOpenChannel(String channelName){
         return messageBoxes.get(channelName) != null;
     }
