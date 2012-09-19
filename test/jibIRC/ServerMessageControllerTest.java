@@ -61,6 +61,7 @@ public class ServerMessageControllerTest {
         TestJoinChannel blah = new TestJoinChannel(handler);
         ServerMessageController instance = new ServerMessageController(handler, blah);
         instance.actionPerformed(null);
+        assertTrue(blah.joinSuccess);
     }
     
     class TestUserList extends JibIRC{
@@ -76,12 +77,18 @@ public class ServerMessageControllerTest {
             users.add(user);
         }
         
+        @Override
+        public boolean isOpenChannel(String channelName){
+            return channelName.equals("#GameReaper");
+        }
+        
         public int getNumberOfUsers(){
             return users.size();
         }
     }
     
     class TestJoinChannel extends JibIRC{
+        public boolean joinSuccess = false;
         
         public TestJoinChannel(IRCHandler handler){
             super(handler);
@@ -90,7 +97,7 @@ public class ServerMessageControllerTest {
         
         @Override
         public void joinChannel(String channelName){
-            fail("this should fail");
+            joinSuccess = true;
         }
         
     }

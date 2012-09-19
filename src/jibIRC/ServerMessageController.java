@@ -64,7 +64,7 @@ public class ServerMessageController implements ActionListener {
         String userList = splitParameters[1];
         String[] users = userList.split(" ");
         if(!irc.isOpenChannel(channelName)){
-            System.err.println("error");
+            System.err.println("error " + channelName);
             return;
         }
         for (int i = 0; i < users.length; i++) {
