@@ -271,6 +271,7 @@ public class JibIRC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_channelListValueChanged
 
+    
     private void switchPanels() {
         getContentPane().remove(loginPanel);
         getContentPane().add(channelPanel);
@@ -279,6 +280,14 @@ public class JibIRC extends javax.swing.JFrame {
     }
 
     public void joinChannel(String channelName) {
+        createChannel(channelName);
+        switchToChannel(channelName);
+        
+        String welcomeMessage = "now talking in " + channelName + "\n";
+        messageBox.setText(welcomeMessage);
+    }
+    
+    public void createChannel(String channelName){
         //create message box
         JTextArea newMessageBox = new JTextArea();
         newMessageBox.setColumns(20);
@@ -293,12 +302,21 @@ public class JibIRC extends javax.swing.JFrame {
         usersList.put(channelName, newUserList);
         users = newUserList;
         
-        //add channel to list and switch to
+        //add channel to list
         channels.add(channels.getSize(), channelName);
-        channelList.setSelectedIndex(channels.getSize() - 1);
-        
-        String welcomeMessage = "now talking in " + channelName + "\n";
-        messageBox.setText(welcomeMessage);
+    }
+    
+    public void switchToChannel(String channelName){
+        int index = channels.indexOf(channelName);
+        channelList.setSelectedIndex(index);
+    }
+    
+    public String getActiveChannelName(){
+        return activeChannel;
+    }
+    
+    public boolean channelExists(String channelName){
+        return messageBoxes.get(channelName) != null;
     }
     
     public void leaveChannel(String channelName) {
