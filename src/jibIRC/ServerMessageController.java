@@ -20,6 +20,7 @@ public class ServerMessageController implements ActionListener {
         this.irc = irc;
     }
 
+    //this isn't ugly at all.....
     public void actionPerformed(java.awt.event.ActionEvent e) {
         String message = handler.receiveMessage();
         if (message != null) {
@@ -28,8 +29,12 @@ public class ServerMessageController implements ActionListener {
                 ServerMessage serverMessage = new ServerMessage(parser.getPrefix(), parser.getCommand(), parser.getParameters());
                 if (serverMessage.isPing()) {
                     handler.sendCommand("/PONG " + serverMessage.getParameters());
-                } else if (serverMessage.isJoinNewChannel(irc.getNick())) {
-                    irc.joinChannel(serverMessage.getParameters());
+                } else if (serverMessage.isJoinChannel()) {
+                    if(serverMessage.getPrefix().equals(irc.getNick())){
+                        irc.joinChannel(serverMessage.getParameters());
+                    }else{
+                        irc.addUser(serverMessage.getParameters(), serverMessage.getPrefix());
+                    }
                 } else if (serverMessage.isLeaveChannel(irc.getNick())) {
                     String command = serverMessage.getCommand();
                     irc.leaveChannel(command.split(" ")[1]);

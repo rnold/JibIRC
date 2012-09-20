@@ -19,8 +19,8 @@ public class ServerMessage {
         this.parameters = parameters;
     }
     
-    public boolean isJoinNewChannel(String nick) {
-           return prefix.equals(nick) && command.equals("JOIN");
+    public boolean isJoinChannel() {
+           return command.equals("JOIN");
     }
     
     public boolean isChannelMessage(){

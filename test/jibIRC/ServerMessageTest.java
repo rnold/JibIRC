@@ -47,7 +47,7 @@ public class ServerMessageTest {
     @Test
     public void testIfJoinMessage(){
         ServerMessage message = new ServerMessage("JibTest", "JOIN", "#hibob");
-        if(!message.isJoinNewChannel("JibTest")){
+        if(!message.isJoinChannel()){
             fail();
         }
     }

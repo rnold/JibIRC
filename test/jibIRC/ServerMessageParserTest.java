@@ -48,12 +48,22 @@ public class ServerMessageParserTest {
     }
     
     @Test
+    public void testFreenodeJoin(){
+        String shouldMatch = ":JibTest!~JibTest@d216-108-168-26.theedge.ca JOIN #cooldudes";
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertTrue(parser.isWellFormed());
+        assertEquals(parser.getPrefix(), "JibTest");
+        assertEquals(parser.getCommand(), "JOIN");
+        assertEquals(parser.getParameters(), "#cooldudes");
+    }
+    
+    @Test
     public void testMoreSuccessfulParsing(){
         String shouldMatch = ":jibril13!jibril_13@relic-b5s.33u.108.216.IP PRIVMSG #hi :asdfa";
         assertTrue(ServerMessageParser.parse(shouldMatch).isWellFormed());
     }
     
-        @Test
+    @Test
     public void testParseUsers(){
         String shouldMatch = ":critical.relic.net 353 JibTest = #GameReaper :+ubi_21 &GameReaper +SouL +Worseley %lionelione43 +aretha +iniquity @pegasus &alogwe JibTest %KG +supapaint +Metallica ~Mayhemisis +Taranis +inferna +tomt00001 +Guest10513 +driv +matrix12 +jibril13 +Zoen &Monochrome +Pyro +GrinningDoom +Kid @Zeus +enissay +scribblez +WiseBoy +WickedJester @Shrap +aeon2 @Apollo ~Anthrax +Meathook %aroldao";
         ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);

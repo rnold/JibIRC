@@ -34,6 +34,14 @@ public class ServerMessageParser {
             parser.parameters = (m.group(5) != null) ? m.group(5) : "";
             return parser;
         }*/
+        p = Pattern.compile(":(\\S+)!\\S+ (JOIN) :?(.+)");
+        m = p.matcher(message);
+        if (m.matches()) {
+            parser.prefix = m.group(1);
+            parser.command = m.group(2);
+            parser.parameters = m.group(3);
+            return parser;
+        }
         
         //message
         p = Pattern.compile("(:(\\S+)!\\S+ )?(\\w+) :(.+)");
@@ -44,7 +52,7 @@ public class ServerMessageParser {
             parser.parameters = m.group(4);
             return parser;
         }
-        //join or privmsg
+        //privmsg
         p = Pattern.compile(":(\\S+)!\\S+ (\\w+ #?\\w+) :(.+)");
         m = p.matcher(message);
         if (m.matches()) {
