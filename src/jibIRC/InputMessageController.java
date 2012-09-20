@@ -26,7 +26,7 @@ public class InputMessageController implements ActionListener{
             handler.sendCommand(contents);
         } else {
             handler.sendMessage(contents, irc.getActiveChannel());
-            irc.putMessage(irc.getNick() + ": " + contents + "\n");
+            irc.addMessage(irc.getActiveChannel(), contents, irc.getNick());
         }
         irc.resetInputBox();
 

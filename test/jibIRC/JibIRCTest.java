@@ -123,7 +123,7 @@ public class JibIRCTest {
     public void putMessage(){
         JibIRC irc = new JibIRC(null);
         irc.joinChannel("#GameReaper");
-        
+        irc.addMessage("#GameReaper", "this message should be added", "JibTest");
     }
     
 

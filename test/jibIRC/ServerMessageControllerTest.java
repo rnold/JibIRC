@@ -102,6 +102,15 @@ public class ServerMessageControllerTest {
         assertFalse(blah.addSuccess);
     }
     
+    @Test
+    public void testPrivMsg(){
+        IRCHandler handler = new PrivMsgHandler();
+        TestPrivMsg irc = new TestPrivMsg();
+        ServerMessageController instance = new ServerMessageController(handler, irc);
+        instance.actionPerformed(null);
+        assertTrue(irc.privMsgSuccess);
+    }
+    
     class TestUserList extends JibIRC{
         ArrayList<String> users;
         
@@ -161,6 +170,24 @@ public class ServerMessageControllerTest {
         
     }
     
+    class TestPrivMsg extends JibIRC{
+        public boolean privMsgSuccess = false;
+        public TestPrivMsg(){
+            super(null);
+            nick = "JibTest";
+        }
+        
+        @Override
+        public void addMessage(String one, String two, String three){
+            privMsgSuccess = true;
+        }
+        
+        @Override
+        public boolean isOpenChannel(String channelName){
+            return true;
+        }
+    }
+    
     class JoinHandler extends IRCHandler{
         
         @Override
@@ -174,6 +201,14 @@ public class ServerMessageControllerTest {
         @Override
         public String receiveMessage(){
             return ":uguysaremean!uguysaremean@relic-mua211.theedge.ca PART #hibob";
+        }
+    }
+    
+    class PrivMsgHandler extends IRCHandler{
+        
+        @Override
+        public String receiveMessage(){
+            return ":jibril13!jibril_13@relic-mua211.theedge.ca PRIVMSG JibTest :dude";
         }
     }
 }

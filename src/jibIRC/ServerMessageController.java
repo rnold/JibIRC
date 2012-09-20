@@ -48,9 +48,8 @@ public class ServerMessageController implements ActionListener {
                     String user = serverMessage.getPrefix();
                     irc.addMessage(command.split(" ")[1], parameters, user);
                 } else if (serverMessage.isPrivateMessage(irc.getNick())) {
+                    String username = serverMessage.getPrefix();
                     String parameters = serverMessage.getParameters();
-                    String command = serverMessage.getCommand();
-                    String username = command.split(" ")[1];
                     if (!irc.isOpenChannel(username)) {
                         irc.joinChannel(username);
                     }
