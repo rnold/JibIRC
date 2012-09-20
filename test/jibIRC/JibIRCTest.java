@@ -77,13 +77,25 @@ public class JibIRCTest {
     @Test
     public void testAddUser(){
         String channelName = "#GameReaper";
+        String username = "JibTest";
+        JibIRC irc = new JibIRC(null);
+        irc.createChannel(channelName);
+        irc.addUser(channelName, username);
+        
+        Channel channel = irc.channelBoxes.get(channelName);
+        assertTrue(channel.userExists(username));
+    }
+    
+    @Test
+    public void testRemoveUser(){
+        String channelName = "#GameReaper";
         String userName = "JibTest";
         JibIRC irc = new JibIRC(null);
         irc.createChannel(channelName);
         irc.addUser(channelName, userName);
-        
+        irc.removeUser(channelName, userName);
         Channel channel = irc.channelBoxes.get(channelName);
-        assertTrue(channel.userExists(userName));
+        assertFalse(channel.userExists(userName));
     }
     
     @Test
@@ -105,6 +117,13 @@ public class JibIRCTest {
         assertEquals(channelName, irc.getActiveChannelName());
         irc.leaveChannel(channelName);
         assertFalse(irc.channelExists(channelName));
+    }
+    
+    @Test
+    public void putMessage(){
+        JibIRC irc = new JibIRC(null);
+        irc.joinChannel("#GameReaper");
+        
     }
     
 

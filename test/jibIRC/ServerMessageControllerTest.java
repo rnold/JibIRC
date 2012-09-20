@@ -64,6 +64,44 @@ public class ServerMessageControllerTest {
         assertTrue(blah.joinSuccess);
     }
     
+    @Test
+    public void testLeaveChannel(){
+        IRCHandler handler = new JoinHandler();
+        TestJoinChannel blah = new TestJoinChannel(null);
+        ServerMessageController instance = new ServerMessageController(handler, blah);
+        instance.actionPerformed(null);
+        assertTrue(blah.joinSuccess);
+        
+        handler = new LeaveHandler();
+        instance = new ServerMessageController(handler, blah);
+        instance.actionPerformed(null);
+        assertFalse(blah.joinSuccess);
+    }
+    
+    @Test
+    public void testAddUser(){
+        IRCHandler handler = new JoinHandler();
+        TestJoinChannel blah = new TestJoinChannel(null, "SomeoneElse");
+        ServerMessageController instance = new ServerMessageController(handler, blah);
+        instance.actionPerformed(null);
+        assertTrue(blah.addSuccess);
+        
+    }
+    
+    @Test
+    public void testRemoveUser(){
+        IRCHandler handler = new JoinHandler();
+        TestJoinChannel blah = new TestJoinChannel(null, "SomeoneElse");
+        ServerMessageController instance = new ServerMessageController(handler, blah);
+        instance.actionPerformed(null);
+        assertTrue(blah.addSuccess);
+        
+        handler = new LeaveHandler();
+        instance = new ServerMessageController(handler, blah);
+        instance.actionPerformed(null);
+        assertFalse(blah.addSuccess);
+    }
+    
     class TestUserList extends JibIRC{
         ArrayList<String> users;
         
@@ -89,15 +127,36 @@ public class ServerMessageControllerTest {
     
     class TestJoinChannel extends JibIRC{
         public boolean joinSuccess = false;
+        public boolean addSuccess = false;
         
         public TestJoinChannel(IRCHandler handler){
             super(handler);
             nick = "uguysaremean";
         }
         
+        public TestJoinChannel(IRCHandler handler, String nick){
+            super(handler);
+            this.nick = nick;
+        }
+        
         @Override
         public void joinChannel(String channelName){
             joinSuccess = true;
+        }
+        
+        @Override
+        public void leaveChannel(String channelName){
+            joinSuccess = false;
+        }
+        
+        @Override
+        public void addUser(String channelName, String username){
+            addSuccess = true;
+        }
+        
+        @Override
+        public void removeUser(String channelName, String username){
+            addSuccess = false;
         }
         
     }
@@ -107,6 +166,14 @@ public class ServerMessageControllerTest {
         @Override
         public String receiveMessage(){
             return ":uguysaremean!uguysaremean@relic-mua211.theedge.ca JOIN :#hibob";
+        }
+    }
+    
+    class LeaveHandler extends IRCHandler{
+        
+        @Override
+        public String receiveMessage(){
+            return ":uguysaremean!uguysaremean@relic-mua211.theedge.ca PART #hibob";
         }
     }
 }

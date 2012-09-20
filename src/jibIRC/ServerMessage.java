@@ -35,8 +35,8 @@ public class ServerMessage {
         return command.equals("PING");
     }
     
-    public boolean isLeaveChannel(String nick){
-        return prefix.equals(nick) && command.startsWith("PART");
+    public boolean isLeaveChannel(){
+        return command.startsWith("PART");
     }
     
     public boolean isUserList(){

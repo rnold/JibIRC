@@ -84,6 +84,15 @@ public class ServerMessageParserTest {
     }
     
     @Test
+    public void testParsePart2(){
+        String shouldMatch = ":SomeoneElse!SomeoneElse@relic-mua211.theedge.ca PART #hibob";
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertEquals("SomeoneElse", parser.getPrefix());
+        assertEquals("PART #hibob", parser.getCommand());
+        assertEquals("", parser.getParameters());
+    }
+    
+    @Test
     public void testParseGroups() throws Exception{
         String shouldMatch = ":JibTest!JibTest@relic-mua211.theedge.ca JOIN :#hibob";
         ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);

@@ -312,6 +312,11 @@ public class JibIRC extends javax.swing.JFrame {
 
     }
     
+    public void removeUser(String channelName, String username){
+        Channel currentChannel = channelBoxes.get(channelName);
+        currentChannel.removeUser(username);
+    }
+    
     public void addMessage(String channel, String message, String user){
         channelBoxes.get(channel).addMessage(user + ": " + message + "\n");
     }

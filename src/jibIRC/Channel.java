@@ -29,7 +29,20 @@ public class Channel extends javax.swing.JPanel {
     
     public void addUser(String username){
         DefaultListModel model = (DefaultListModel)usersList.getModel();
-        model.addElement(username);
+        String comparedTo;
+        int i;
+        for(i = 0; i < model.size(); i++){
+            comparedTo = (String)model.get(i);
+            if(comparedTo.compareTo(username) > 0){
+                break;
+            }
+        }
+        model.add(i, username);
+    }
+    
+    public void removeUser(String username){
+        DefaultListModel model = (DefaultListModel) usersList.getModel();
+        model.removeElement(username);
     }
     
     public boolean userExists(String userName){

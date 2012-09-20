@@ -35,9 +35,13 @@ public class ServerMessageController implements ActionListener {
                     }else{
                         irc.addUser(serverMessage.getParameters(), serverMessage.getPrefix());
                     }
-                } else if (serverMessage.isLeaveChannel(irc.getNick())) {
-                    String command = serverMessage.getCommand();
-                    irc.leaveChannel(command.split(" ")[1]);
+                } else if (serverMessage.isLeaveChannel()) {
+                    if(serverMessage.getPrefix().equals(irc.getNick())){
+                        String command = serverMessage.getCommand();
+                        irc.leaveChannel(command.split(" ")[1]);
+                    }else{
+                        irc.removeUser(serverMessage.getParameters(), serverMessage.getPrefix());
+                    }
                 } else if (serverMessage.isChannelMessage()) {
                     String command = serverMessage.getCommand();
                     String parameters = serverMessage.getParameters();

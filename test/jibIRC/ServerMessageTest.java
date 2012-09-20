@@ -55,9 +55,16 @@ public class ServerMessageTest {
     @Test
     public void testIfPartMessage(){
         ServerMessage message = new ServerMessage("JibTest", "PART #hibob", "");
-        if(!message.isLeaveChannel("JibTest")){
+        if(!message.isLeaveChannel()){
             fail();
         }
+    }
+    
+    @Test
+    public void testIfPartMessage2(){
+        ServerMessage message = new ServerMessage("SomeoneElse", "PART #hibob", "");
+        assertTrue(message.isLeaveChannel());
+        
     }
     
     @Test
