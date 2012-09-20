@@ -75,9 +75,9 @@ public class ServerMessageParserTest {
     
     @Test
     public void testParseGroups() throws Exception{
-        String shouldMatch = ":uguysaremean!uguysaremean@relic-mua211.theedge.ca JOIN :#hibob";
+        String shouldMatch = ":JibTest!JibTest@relic-mua211.theedge.ca JOIN :#hibob";
         ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
-        assertEquals("uguysaremean", parser.getPrefix());
+        assertEquals("JibTest", parser.getPrefix());
         assertEquals("JOIN", parser.getCommand());
         assertEquals("#hibob", parser.getParameters());
     }

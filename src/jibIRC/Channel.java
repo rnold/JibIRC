@@ -4,20 +4,41 @@
  */
 package jibIRC;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Welcome
  */
 public class Channel extends javax.swing.JPanel {
+    
+    DefaultListModel currentChannelUsers;
+    String channelName;
 
     /**
      * Creates new form Channel
      */
-    public Channel() {
+    public Channel(String channelName) {
+        this.channelName = channelName;
         initComponents();
     }
-    public void retardation(){
-        initComponents();
+
+    public void addMessage(String message){
+        messageBox.append(message);
+    }
+    
+    public void addUser(String username){
+        DefaultListModel model = (DefaultListModel)usersList.getModel();
+        model.addElement(username);
+    }
+    
+    public boolean userExists(String userName){
+        DefaultListModel userModel = (DefaultListModel)usersList.getModel();
+        return userModel.contains(userName);
+    }
+    
+    public String toString(){
+        return channelName;
     }
 
     /**
@@ -31,24 +52,37 @@ public class Channel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         messageBox = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        usersList = new javax.swing.JList();
 
         messageBox.setColumns(20);
         messageBox.setRows(5);
         jScrollPane1.setViewportView(messageBox);
 
+        currentChannelUsers = new javax.swing.DefaultListModel();
+        usersList.setModel(currentChannelUsers);
+        jScrollPane2.setViewportView(usersList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTextArea messageBox;
+    public javax.swing.JList usersList;
     // End of variables declaration//GEN-END:variables
 }
