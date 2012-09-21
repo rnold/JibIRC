@@ -14,14 +14,20 @@ import java.awt.event.ActionListener;
 public class LeaveChannelController implements ActionListener{
     Channel channel;
     IRCHandler handler;
+    JibIRC irc;
     
-    public LeaveChannelController(IRCHandler handler, Channel channel){
+    public LeaveChannelController(IRCHandler handler, Channel channel, JibIRC irc){
         this.handler = handler;
         this.channel = channel;
+        this.irc = irc;
     }
     
     public void actionPerformed(ActionEvent ae){
-        handler.sendCommand("/PART " + channel);
+        if(channel.toString().startsWith("#")){
+            handler.sendCommand("/PART " + channel);
+        }else{
+            irc.leaveChannel(channel.toString());
+        }
     }
     
 }

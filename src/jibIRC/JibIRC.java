@@ -287,7 +287,7 @@ public class JibIRC extends javax.swing.JFrame {
         }
         //create channel
         Channel channel = new Channel(channelName);
-        channel.setLeaveListener(handler);
+        channel.setLeaveListener(handler, this);
         channel.setPMListener(this);
         channelBoxes.put(channelName, channel);
         jPanel1.add(channel, channelName);

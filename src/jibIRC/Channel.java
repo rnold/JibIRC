@@ -24,8 +24,8 @@ public class Channel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void setLeaveListener(IRCHandler handler){
-        jButton1.addActionListener(new LeaveChannelController(handler, this));
+    public void setLeaveListener(IRCHandler handler, JibIRC irc){
+        jButton1.addActionListener(new LeaveChannelController(handler, this, irc));
     }
     
     public void setPMListener(JibIRC irc){
