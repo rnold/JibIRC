@@ -1,0 +1,110 @@
+:thecastle.au.relic.net NOTICE Auth :*** Looking up your hostname...
+:thecastle.au.relic.net NOTICE 848AABUW7 :*** Skipping host resolution (disabled by server administrator)
+:thecastle.au.relic.net NOTICE Auth :Welcome to RelicNet!
+:thecastle.au.relic.net 001 JibTest :Welcome to the RelicNet IRC Network JibTest!JibTest@216.108.168.26
+:thecastle.au.relic.net 002 JibTest :Your host is thecastle.au.relic.net, running version InspIRCd-2.0
+:thecastle.au.relic.net 003 JibTest :This server was created 09:07:15 Jun 24 2012
+:thecastle.au.relic.net 004 JibTest thecastle.au.relic.net InspIRCd-2.0 BHIRScdhikorswx ABCFIKLMNOQRSTabcefghijklmnopqrstvz FILabefghjkloqv
+:thecastle.au.relic.net 005 JibTest AWAYLEN=201 CASEMAPPING=rfc1459 CHANMODES=Ibeg,k,FLfjl,ABCKMNOQRSTcimnprstz CHANTYPES=# CHARSET=ascii ELIST=MU EXCEPTS=e EXTBAN=,ABCNOQRSTcmprz FNC INVEX=I KICKLEN=256 MAP MAXBANS=60 :are supported by this server
+:thecastle.au.relic.net 005 JibTest MAXCHANNELS=40 MAXPARA=32 MAXTARGETS=20 MODES=20 NAMESX NETWORK=RelicNet NICKLEN=32 OPERLOG OVERRIDE PREFIX=(qaohv)~&@%+ SSL=113.212.96.205:7000 STARTTLS STATUSMSG=~&@%+ :are supported by this server
+:thecastle.au.relic.net 005 JibTest TOPICLEN=358 UHNAMES USERIP VBANLIST WALLCHOPS WALLVOICES WATCH=32 :are supported by this server
+:thecastle.au.relic.net 042 JibTest 848AABUW7 :your unique ID
+:thecastle.au.relic.net 375 JibTest :thecastle.au.relic.net message of the day
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :-     .....                                          ...                         .x+=:.        s          ..           
+:thecastle.au.relic.net 372 JibTest :-  .H8888888h.  ~-.    .uef^"                     xH88"`~ .x8X                  z`    ^%      :8    x .d88"            
+:thecastle.au.relic.net 372 JibTest :-  888888888888x  `> :d88E                      :8888   .f"8888Hf                  .   <k    .88     5888R             
+:thecastle.au.relic.net 372 JibTest :- X~     `?888888hx~ `888E            .u       :8888>  X8L  ^""`        u        .@8Ned8"   :888ooo  '888R        .u   
+:thecastle.au.relic.net 372 JibTest :- '      x8.^"*88*"   888E .z8k    ud8888.     X8888  X888h          us888u.   .@^%8888"  -*8888888   888R     ud8888. 
+:thecastle.au.relic.net 372 JibTest :-  `-:- X8888x        888E~?888L :888'8888.    88888  !88888.     .@88 "8888" x88:  `)8b.   8888      888R   :888'8888.
+:thecastle.au.relic.net 372 JibTest :-       488888>       888E  888E d888 '88%"    88888   %88888     9888  9888  8888N=*8888   8888      888R   d888 '88%"
+:thecastle.au.relic.net 372 JibTest :-     .. `"88*        888E  888E 8888.+"       88888 '> `8888>    9888  9888   %8"    R88   8888      888R   8888.+"   
+:thecastle.au.relic.net 372 JibTest :-   x88888nX"      .  888E  888E 8888L         `8888L %  ?888   ! 9888  9888    @8Wou 9%   .8888Lu=   888R   8888L     
+:thecastle.au.relic.net 372 JibTest :-  !"*8888888n..  :   888E  888E '8888c. .+     `8888  `-*""   /  9888  9888  .888888P`    ^%888*    .888B . '8888c. .+
+:thecastle.au.relic.net 372 JibTest :- '    "*88888888*   m888N= 888>  "88888%         "888.      :"   "888*""888" `   ^"F        'Y"     ^*888%   "88888%  
+:thecastle.au.relic.net 372 JibTest :-         ^"***"`     `Y"   888     "YP'            `""***~"`      ^Y"   ^Y'                           "%       "YP'   
+:thecastle.au.relic.net 372 JibTest :-                          J88"                                                                                        
+:thecastle.au.relic.net 372 JibTest :-                          @%                                                                                          
+:thecastle.au.relic.net 372 JibTest :-                        :"                                                                                            
+:thecastle.au.relic.net 372 JibTest :-                  Your host has been logged your location has been found. Abide by network rules.
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :-                                                      o         _ _ _ _ _
+:thecastle.au.relic.net 372 JibTest :-                                                 _----|         I-I-I-I-I
+:thecastle.au.relic.net 372 JibTest :-                              _ _ _ _ _ _      o  ----|     o   \~~`~'~~/
+:thecastle.au.relic.net 372 JibTest :-                              ]-I-I-I-I-[ _----|      |_----|    |.    |
+:thecastle.au.relic.net 372 JibTest :-                              \~`\~~~/'~/  ----|     / \----|    |  /^\|
+:thecastle.au.relic.net 372 JibTest :-                               [*] ' __|       ^    / ^ \   ^    |_ |*||
+:thecastle.au.relic.net 372 JibTest :-                               |__    ,|      / \  /    `\ / \   |  ===|
+:thecastle.au.relic.net 372 JibTest :-                             __|  ___ ,|__   /    /=_=_=_=\   \  |,  __|
+:thecastle.au.relic.net 372 JibTest :-                             I_I__I_I__I_I  (====(_________)___|_|_____|___
+:thecastle.au.relic.net 372 JibTest :-                             \-\--|-|--/-/  |'    I~~[ ]~~I I_I__|IIII|_I_l
+:thecastle.au.relic.net 372 JibTest :-                              | [ ]    '|   | [~] |_`_~_ _[  \-\--|-|--/-/
+:thecastle.au.relic.net 372 JibTest :-                              |.   | |' |___|____`I_I_|_I_I___|---------|
+:thecastle.au.relic.net 372 JibTest :-                             / \| [] ~ .|_|-|_|-|-|_|-|_|-|_|-| []   [] |
+:thecastle.au.relic.net 372 JibTest :-                            <===>  |  ~.|-=-=-=-=-=-=-=-=-=-=-|~  |  ~ / \
+:thecastle.au.relic.net 372 JibTest :-                            | []|`   []~||.|.|.|.|.|.|.|.|.|.||-~   ~ <===>
+:thecastle.au.relic.net 372 JibTest :-    O O      o o            | []| ` |   |/////////I\\\\\\\\\\||__. ~| |[*]I
+:thecastle.au.relic.net 372 JibTest :-   O * O    o * o           <===> ~   ' ||||| |   |   | ||||.||  []  ~<===>
+:thecastle.au.relic.net 372 JibTest :-    O O      o o             \T/  |~|-- ||||| | O | O | ||||.|| . |'~  \T/
+:thecastle.au.relic.net 372 JibTest :-    \I        I/              |     ~.~_||||| |~~~|~~~| ||||.|| | ~   | |
+:thecastle.au.relic.net 372 JibTest :- ____I/______\I____\/..___.../|' v . | .|||||/____|____\|||| /|. . | . .|\.\/_
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :- Network Rules ---------------
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :-  o No Flooding     o No DoS bots   o No Clones
+:thecastle.au.relic.net 372 JibTest :-  o No Takeovers    o No Spamming   o No Annoying
+:thecastle.au.relic.net 372 JibTest :-  o No Channel Wars o No Porn or Warez
+:thecastle.au.relic.net 372 JibTest :-  o Bots are allowed, but if your "client" becomes 
+:thecastle.au.relic.net 372 JibTest :-    troublesome, we might remove it it.
+:thecastle.au.relic.net 372 JibTest :-  o Please also view our rules by typing:
+:thecastle.au.relic.net 372 JibTest :-    /rules
+:thecastle.au.relic.net 372 JibTest :-  o Continued use of this services implies consent
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :- Notice -------------------
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :-  Network Operators are NOT allowed to get into 
+:thecastle.au.relic.net 372 JibTest :-  channel affairs unless the channel violates a 
+:thecastle.au.relic.net 372 JibTest :-  network rule (listed above). If you are 
+:thecastle.au.relic.net 372 JibTest :-  experiencing treason, or just problem ops, 
+:thecastle.au.relic.net 372 JibTest :-  Please do NOT get the Network Operators involved.
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :- Disclaimer -----------------
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :-  o Proxy and Drone (version) scans are issued 
+:thecastle.au.relic.net 372 JibTest :-    upon connecting.
+:thecastle.au.relic.net 372 JibTest :-  o If you wish not to be auto scanned please 
+:thecastle.au.relic.net 372 JibTest :-    disconnect now!  
+:thecastle.au.relic.net 372 JibTest :-  o This server, its staff and the people hosting 
+:thecastle.au.relic.net 372 JibTest :-    it are *NOT* responsible for the content that 
+:thecastle.au.relic.net 372 JibTest :-    passes through this server.
+:thecastle.au.relic.net 372 JibTest :-  o Use of this server is a *privilege* which may 
+:thecastle.au.relic.net 372 JibTest :-    be removed at any time and for any reason by 
+:thecastle.au.relic.net 372 JibTest :-    the friendly network operators.
+:thecastle.au.relic.net 372 JibTest :-  o Each channel founder is responsible for 
+:thecastle.au.relic.net 372 JibTest :-    policing their own channel(s) by the correct 
+:thecastle.au.relic.net 372 JibTest :-    laws and guidelines. OtherWorlders accepts no 
+:thecastle.au.relic.net 372 JibTest :-    responsibility for the actions of channel 
+:thecastle.au.relic.net 372 JibTest :-    members or their founders.
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :- 
+:thecastle.au.relic.net 372 JibTest :- Enjoy your stay here at 01010100 01101000 01100101  01000011 01100001 01110011 01110100 01101100 01100101 :)
+:thecastle.au.relic.net 376 JibTest :End of message of the day.
+:thecastle.au.relic.net 251 JibTest :There are 54 users and 44 invisible on 8 servers
+:thecastle.au.relic.net 252 JibTest 11 :operator(s) online
+:thecastle.au.relic.net 254 JibTest 64 :channels formed
+:thecastle.au.relic.net 255 JibTest :I have 26 clients and 1 servers
+:thecastle.au.relic.net 265 JibTest :Current Local Users: 26  Max: 27
+:thecastle.au.relic.net 266 JibTest :Current Global Users: 98  Max: 108
+:thecastle.au.relic.net 396 JibTest relic-b5s.33u.108.216.IP :is now your displayed host
+:JibTest!JibTest@relic-b5s.33u.108.216.IP MODE JibTest +x
+:thecastle.au.relic.net 474 JibTest #lobby :Cannot join channel (You're banned)
+:Global!services@relic.net NOTICE JibTest :[Logon News - May 19 2003] Welcome To RelicNET!
+:Global!services@relic.net NOTICE JibTest :[Logon News - Nov 15 2005] Upon Connecting to this network you will be scanned for insecure proxies. Please do not be alarmed as this is a general procedure. RELICNET Staff.
+:Global!services@relic.net NOTICE JibTest :[Logon News - Apr 06 2008] Relic.NET Welcomes Tauri.Relic.Net as Relic.Net's 1st SSL only irc server. /server tauri.relic.net +7000 for Access! Thanks for Flying Relic.Net
+:JibTest!JibTest@relic-b5s.33u.108.216.IP JOIN :#GameReaper
+:thecastle.au.relic.net 332 JibTest #GameReaper :visit www.gamereaper.net for the latest news, reviews and community chat. 4,1Ladies and Gents, We now have our own channel on our New Zealand Teamspeak server (11,1ts.vgn.co.nz4) so come and have a chat in channel 11GameReaper
+:thecastle.au.relic.net 333 JibTest #GameReaper rsm 1340671607
+:thecastle.au.relic.net 353 JibTest = #GameReaper :+iniquity +ubi_21 +GrinningDoom +aeon &ibanez @Zeus +aroldao-work +inferna @pegasus +Hen +supapaint +acien +comper @Shrapnal ~Anthrax %aroldao +Worseley +tomt00001 %lionelione43 +WickedJester +jibril13 +SouL +Meathook +Metallica @Apollo +Zoen &Mayhemisis JibTest +ewgola @HNT[HCL] &GameReaper 
+:thecastle.au.relic.net 366 JibTest #GameReaper :End of /NAMES list.
+:Anthrax!Anthrax@Epic.Winning MODE #GameReaper +v JibTest

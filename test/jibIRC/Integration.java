@@ -4,6 +4,11 @@
  */
 package jibIRC;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,6 +53,23 @@ public class Integration {
         assertTrue(channel.userExists("Jibril_13"));
         irc.printChannels();
     }
+    
+    @Test
+    public void testRelicText(){
+        RelicTextHandler handler = new RelicTextHandler();
+        JibIRC irc = new JibIRC(handler);
+        irc.nick = "JibTest";
+        ServerMessageController controller = new ServerMessageController(handler, irc);
+        do{
+            controller.actionPerformed(null);
+        }while(!handler.returned.equals(""));
+        
+        assertTrue(irc.channelExists("#GameReaper"));
+        Channel channel = irc.channelBoxes.get("#GameReaper");
+        assertTrue(channel.userExists("+supapaint"));
+        
+        
+    }
 }
 
 class TestHandler extends IRCHandler {
@@ -68,3 +90,27 @@ class TestHandler extends IRCHandler {
     }
 }
 
+class RelicTextHandler extends IRCHandler {
+    BufferedReader in;
+    String returned;
+    
+    public RelicTextHandler(){
+        try{
+            in = new BufferedReader(new FileReader(new File("C:\\Users\\Welcome\\Documents\\old pc\\NetBeansProjects\\JibIRC\\test\\jibIRC\\relictext.txt")));
+        }catch(FileNotFoundException e){
+            System.err.println("file not found");
+        }
+    }
+
+    @Override
+    public String receiveMessage() {
+        returned = "";
+        try {
+            if (in.ready()) {
+                returned = in.readLine();
+            }
+        } catch (IOException e) {
+        }
+        return returned;
+    }
+}

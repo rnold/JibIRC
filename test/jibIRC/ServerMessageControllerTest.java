@@ -51,8 +51,28 @@ public class ServerMessageControllerTest {
         ServerMessageController instance = new ServerMessageController(null, blah);
         instance.setUserList(serverMessage);
         
-        assertEquals(blah.getNumberOfUsers(), 2);
+        assertEquals(2, blah.getNumberOfUsers());
         // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    @Test
+    public void testSetUserListWithSpaceAtEnd(){
+        ServerMessage serverMessage = new ServerMessage("", "USERS", "#hi :@JibTest $asdf +safij34 +sdaf3 ");
+        TestUserList blah = new TestUserList(null);
+        ServerMessageController instance = new ServerMessageController(null, blah);
+        instance.setUserList(serverMessage);
+        
+        assertEquals(4, blah.getNumberOfUsers());
+    }
+    
+    @Test
+    public void testRelicUserList(){
+        ServerMessage serverMessage = new ServerMessage("", "USERS", "#GameReaper :+iniquity +ubi_21 +GrinningDoom +aeon &ibanez @Zeus +aroldao-work +inferna @pegasus +Hen +supapaint +acien +comper @Shrapnal ~Anthrax %aroldao +Worseley +tomt00001 %lionelione43 +WickedJester +jibril13 +SouL +Meathook +Metallica @Apollo +Zoen &Mayhemisis JibTest +ewgola @HNT[HCL] &GameReaper ");
+        TestUserList blah = new TestUserList(null);
+        ServerMessageController instance = new ServerMessageController(null, blah);
+        instance.setUserList(serverMessage);
+        
+        assertEquals(31, blah.getNumberOfUsers());
     }
     
     @Test
@@ -126,7 +146,7 @@ public class ServerMessageControllerTest {
         
         @Override
         public boolean channelExists(String channelName){
-            return channelName.equals("#GameReaper");
+            return channelName.equals("#GameReaper") || channelName.equals("#hi");
         }
         
         public int getNumberOfUsers(){

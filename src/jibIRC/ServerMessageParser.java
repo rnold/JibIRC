@@ -63,7 +63,7 @@ public class ServerMessageParser {
         }
         
         //user list
-        p = Pattern.compile(":\\w+.\\w+.\\w+ 353 \\w+ \\S (#\\w+ :.+)");
+        p = Pattern.compile(":\\S+ 353 \\w+ \\S (#\\w+ :.+)");
         m = p.matcher(message);
         if (m.matches()) {
             parser.prefix = "";

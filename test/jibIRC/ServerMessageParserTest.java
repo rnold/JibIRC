@@ -65,13 +65,23 @@ public class ServerMessageParserTest {
     
     @Test
     public void testParseUsers(){
-        String shouldMatch = ":critical.relic.net 353 JibTest = #GameReaper :+ubi_21 &GameReaper +SouL +Worseley %lionelione43 +aretha +iniquity @pegasus &alogwe JibTest %KG +supapaint +Metallica ~Mayhemisis +Taranis +inferna +tomt00001 +Guest10513 +driv +matrix12 +jibril13 +Zoen &Monochrome +Pyro +GrinningDoom +Kid @Zeus +enissay +scribblez +WiseBoy +WickedJester @Shrap +aeon2 @Apollo ~Anthrax +Meathook %aroldao";
+        String shouldMatch = ":critical.relic.net 353 JibTest = #GameReaper :+ubi_21 &GameReaper +SouL +Worseley %lionelione43 +aretha +iniquity @pegasus &alogwe JibTest %KG +supapaint +Metallica ~Mayhemisis +Taranis +inferna +tomt00001 +Guest10513 +driv +matrix12 +jibril13 +Zoen &Monochrome +Pyro +GrinningDoom +Kid @Zeus +enissay +scribblez +WiseBoy +WickedJester @Shrap +aeon2 @Apollo ~Anthrax +Meathook %aroldao ";
         ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
         assertTrue(parser.isWellFormed());
         assertEquals(parser.getPrefix(), "");
         assertEquals(parser.getCommand(), "USERS");
-        assertEquals(parser.getParameters(), "#GameReaper :+ubi_21 &GameReaper +SouL +Worseley %lionelione43 +aretha +iniquity @pegasus &alogwe JibTest %KG +supapaint +Metallica ~Mayhemisis +Taranis +inferna +tomt00001 +Guest10513 +driv +matrix12 +jibril13 +Zoen &Monochrome +Pyro +GrinningDoom +Kid @Zeus +enissay +scribblez +WiseBoy +WickedJester @Shrap +aeon2 @Apollo ~Anthrax +Meathook %aroldao");
+        assertEquals(parser.getParameters(), "#GameReaper :+ubi_21 &GameReaper +SouL +Worseley %lionelione43 +aretha +iniquity @pegasus &alogwe JibTest %KG +supapaint +Metallica ~Mayhemisis +Taranis +inferna +tomt00001 +Guest10513 +driv +matrix12 +jibril13 +Zoen &Monochrome +Pyro +GrinningDoom +Kid @Zeus +enissay +scribblez +WiseBoy +WickedJester @Shrap +aeon2 @Apollo ~Anthrax +Meathook %aroldao ");
         
+    }
+    
+    @Test
+    public void testRelicUsers(){
+        String shouldMatch = ":thecastle.au.relic.net 353 JibTest = #GameReaper :+iniquity +ubi_21 +GrinningDoom +aeon &ibanez @Zeus +aroldao-work +inferna @pegasus +Hen +supapaint +acien +comper @Shrapnal ~Anthrax %aroldao +Worseley +tomt00001 %lionelione43 +WickedJester +jibril13 +SouL +Meathook +Metallica @Apollo +Zoen &Mayhemisis JibTest +ewgola @HNT[HCL] &GameReaper ";
+        ServerMessageParser parser = ServerMessageParser.parse(shouldMatch);
+        assertTrue(parser.isWellFormed());
+        assertEquals(parser.getPrefix(), "");
+        assertEquals(parser.getCommand(), "USERS");
+        assertEquals(parser.getParameters(), "#GameReaper :+iniquity +ubi_21 +GrinningDoom +aeon &ibanez @Zeus +aroldao-work +inferna @pegasus +Hen +supapaint +acien +comper @Shrapnal ~Anthrax %aroldao +Worseley +tomt00001 %lionelione43 +WickedJester +jibril13 +SouL +Meathook +Metallica @Apollo +Zoen &Mayhemisis JibTest +ewgola @HNT[HCL] &GameReaper ");
     }
     
     @Test
