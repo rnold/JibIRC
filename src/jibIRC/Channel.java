@@ -27,6 +27,10 @@ public class Channel extends javax.swing.JPanel {
     public void setLeaveListener(IRCHandler handler){
         jButton1.addActionListener(new LeaveChannelController(handler, this));
     }
+    
+    public void setPMListener(JibIRC irc){
+        usersList.addMouseListener(new CreatePMController(irc));
+    }
 
     public void addMessage(String message){
         messageBox.append(message);
@@ -53,6 +57,12 @@ public class Channel extends javax.swing.JPanel {
     public boolean userExists(String userName){
         DefaultListModel userModel = (DefaultListModel)usersList.getModel();
         return userModel.contains(userName);
+    }
+    
+    public String getSelectedUser(){
+        int index = usersList.getSelectedIndex();
+        DefaultListModel userModel = (DefaultListModel)usersList.getModel();
+        return (String)userModel.get(index);
     }
     
     @Override

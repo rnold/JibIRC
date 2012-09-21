@@ -266,25 +266,37 @@ public class JibIRC extends javax.swing.JFrame {
         getContentPane().repaint();
     }
 
+    public void createPM() {
+        Channel channel = channelBoxes.get(activeChannel);
+        String username = channel.getSelectedUser();
+        joinChannel(username);
+    }
+
     public void joinChannel(String channelName) {
         createChannel(channelName);
         switchToChannel(channelName);
-        
+
         String welcomeMessage = "now talking in " + channelName + "\n";
         Channel channel = channelBoxes.get(channelName);
         channel.messageBox.setText(welcomeMessage);
-    }
+    } 
     
     public void createChannel(String channelName){
+        if(channelExists(channelName)){
+            return;
+        }
         //create channel
         Channel channel = new Channel(channelName);
         channel.setLeaveListener(handler);
+        channel.setPMListener(this);
         channelBoxes.put(channelName, channel);
         jPanel1.add(channel, channelName);
         
         //add channel to list
         channels.add(channels.getSize(), channelName);
     }
+    
+
     
     public void switchToChannel(String channelName){
         int index = channels.indexOf(channelName);
