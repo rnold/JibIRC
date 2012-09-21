@@ -125,7 +125,7 @@ public class ServerMessageControllerTest {
         }
         
         @Override
-        public boolean isOpenChannel(String channelName){
+        public boolean channelExists(String channelName){
             return channelName.equals("#GameReaper");
         }
         
@@ -183,7 +183,7 @@ public class ServerMessageControllerTest {
         }
         
         @Override
-        public boolean isOpenChannel(String channelName){
+        public boolean channelExists(String channelName){
             return true;
         }
     }

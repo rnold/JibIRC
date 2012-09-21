@@ -4,6 +4,7 @@
  */
 package jibIRC;
 
+import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 
 /**
@@ -21,6 +22,10 @@ public class Channel extends javax.swing.JPanel {
     public Channel(String channelName) {
         this.channelName = channelName;
         initComponents();
+    }
+    
+    public void setLeaveListener(IRCHandler handler){
+        jButton1.addActionListener(new LeaveChannelController(handler, this));
     }
 
     public void addMessage(String message){
@@ -50,6 +55,7 @@ public class Channel extends javax.swing.JPanel {
         return userModel.contains(userName);
     }
     
+    @Override
     public String toString(){
         return channelName;
     }
@@ -67,32 +73,47 @@ public class Channel extends javax.swing.JPanel {
         messageBox = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         usersList = new javax.swing.JList();
+        jButton1 = new javax.swing.JButton();
 
         messageBox.setColumns(20);
+        messageBox.setLineWrap(true);
         messageBox.setRows(5);
+        messageBox.setWrapStyleWord(true);
         jScrollPane1.setViewportView(messageBox);
 
         currentChannelUsers = new javax.swing.DefaultListModel();
         usersList.setModel(currentChannelUsers);
         jScrollPane2.setViewportView(usersList);
 
+        jButton1.setText("Leave Channel " + channelName);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 60, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 261, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(226, 226, 226))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-            .addComponent(jScrollPane2)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTextArea messageBox;

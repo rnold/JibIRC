@@ -54,4 +54,9 @@ public class ServerMessage {
     public String getParameters(){
         return parameters;
     }
+    
+    @Override
+    public String toString(){
+        return prefix + " " + command + " " + parameters;
+    }
 }

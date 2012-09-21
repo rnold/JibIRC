@@ -49,7 +49,8 @@ public class JibIRC extends javax.swing.JFrame {
     }
 
     class Quitter extends WindowAdapter {
-
+        
+        @Override
         public void windowClosing(WindowEvent e) {
             if (handler.isInitialized()) {
                 handler.quit();
@@ -277,6 +278,7 @@ public class JibIRC extends javax.swing.JFrame {
     public void createChannel(String channelName){
         //create channel
         Channel channel = new Channel(channelName);
+        channel.setLeaveListener(handler);
         channelBoxes.put(channelName, channel);
         jPanel1.add(channel, channelName);
         
@@ -314,7 +316,11 @@ public class JibIRC extends javax.swing.JFrame {
     
     public void removeUser(String channelName, String username){
         Channel currentChannel = channelBoxes.get(channelName);
-        currentChannel.removeUser(username);
+        if(currentChannel.userExists(username)){
+            currentChannel.removeUser(username);
+        }else{
+            System.err.println("removeUser called when user doesn't exist: This should never happen!");
+        }
     }
     
     public void addMessage(String channelName, String message, String user){
@@ -322,16 +328,8 @@ public class JibIRC extends javax.swing.JFrame {
         channel.addMessage(user + ": " + message + "\n");
     }
     
-    public void textDump(String text){
-        //channel.messageBox.append(text);
-    }
-    
     public String getNick(){
         return nick;
-    }
-    
-    public String getActiveChannel(){
-        return activeChannel;
     }
     
     public void putMessage(String message){
@@ -352,10 +350,6 @@ public class JibIRC extends javax.swing.JFrame {
             System.out.println(channelArray[i]);
         }
     }
-    public boolean isOpenChannel(String channelName){
-        return channelExists(channelName);
-    }
-
 
 
 

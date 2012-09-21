@@ -25,8 +25,8 @@ public class InputMessageController implements ActionListener{
         if (isCommand(contents)) {
             handler.sendCommand(contents);
         } else {
-            handler.sendMessage(contents, irc.getActiveChannel());
-            irc.addMessage(irc.getActiveChannel(), contents, irc.getNick());
+            handler.sendMessage(contents, irc.getActiveChannelName());
+            irc.addMessage(irc.getActiveChannelName(), contents, irc.getNick());
         }
         irc.resetInputBox();
 

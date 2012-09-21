@@ -50,14 +50,12 @@ public class ServerMessageController implements ActionListener {
                 } else if (serverMessage.isPrivateMessage(irc.getNick())) {
                     String username = serverMessage.getPrefix();
                     String parameters = serverMessage.getParameters();
-                    if (!irc.isOpenChannel(username)) {
+                    if (!irc.channelExists(username)) {
                         irc.joinChannel(username);
                     }
                     irc.addMessage(username, parameters, username);
                 } else if (serverMessage.isUserList()) {
                     setUserList(serverMessage);
-                } else {
-                    irc.textDump(message + "\n");
                 }
             }
         }
@@ -66,12 +64,13 @@ public class ServerMessageController implements ActionListener {
     }
 
     public void setUserList(ServerMessage serverMessage) {
+        System.out.println("userlist " + serverMessage);
         String parameters = serverMessage.getParameters();
         String[] splitParameters = parameters.split(" :");
         String channelName = splitParameters[0];
         String userList = splitParameters[1];
         String[] users = userList.split(" ");
-        if(!irc.isOpenChannel(channelName)){
+        if(!irc.channelExists(channelName)){
             System.err.println("error " + channelName);
             return;
         }

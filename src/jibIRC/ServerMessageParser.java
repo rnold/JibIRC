@@ -20,20 +20,11 @@ public class ServerMessageParser {
     private ServerMessageParser(){
     }
     
-    //TODO: fix this retarded regex
     public static ServerMessageParser parse(String message) {
         Pattern p;
         Matcher m;
         ServerMessageParser parser = new ServerMessageParser();
-        /*
-        p = Pattern.compile("(:(\\S+)!\\S+ )?([A-Z].*)( :(.+))?");
-        m = p.matcher(message);
-        if (m.matches()) {
-            parser.prefix = (m.group(2) != null) ? m.group(2) : "";
-            parser.command = m.group(3);
-            parser.parameters = (m.group(5) != null) ? m.group(5) : "";
-            return parser;
-        }*/
+
         p = Pattern.compile(":(\\S+)!\\S+ (JOIN) :?(.+)");
         m = p.matcher(message);
         if (m.matches()) {
