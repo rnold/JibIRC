@@ -266,34 +266,34 @@ public class JibIRC extends javax.swing.JFrame {
         getContentPane().repaint();
     }
 
-    public void createPM() {
-        Channel channel = channelBoxes.get(activeChannel);
-        String username = channel.getSelectedUser();
-        joinChannel(username);
+    public void joinPublicChannel(String channelName){
+        Channel channel = new PublicChannel(channelName, this, handler);
+        joinChannel(channel);
     }
+    
+    public void joinPrivateMessage(String channelName){
+        Channel channel = new PrivateMessage(channelName, this, handler);
+        joinChannel(channel);
+    }
+    
+    public void joinChannel(Channel channel) {
+        createChannel(channel);
+        switchToChannel(channel.toString());
 
-    public void joinChannel(String channelName) {
-        createChannel(channelName);
-        switchToChannel(channelName);
-
-        String welcomeMessage = "now talking in " + channelName + "\n";
-        Channel channel = channelBoxes.get(channelName);
-        channel.messageBox.setText(welcomeMessage);
+        String welcomeMessage = "now talking in " + channel + "\n";
+        channel.addMessage(welcomeMessage);
     } 
     
-    public void createChannel(String channelName){
-        if(channelExists(channelName)){
+    public void createChannel(Channel channel){
+        if(channelExists(channel.toString())){
             return;
         }
         //create channel
-        Channel channel = new Channel(channelName);
-        channel.setLeaveListener(handler, this);
-        channel.setPMListener(this);
-        channelBoxes.put(channelName, channel);
-        jPanel1.add(channel, channelName);
+        channelBoxes.put(channel.toString(), channel);
+        jPanel1.add(channel, channel.toString());
         
         //add channel to list
-        channels.add(channels.getSize(), channelName);
+        channels.add(channels.getSize(), channel.toString());
     }
     
 

@@ -6,28 +6,27 @@ package jibIRC;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
  * @author Welcome
  */
-public class LeaveChannelController implements ActionListener{
-    Channel channel;
+public class LeavePrivateMessageController implements ActionListener{
+    PrivateMessage pm;
     IRCHandler handler;
     JibIRC irc;
     
-    public LeaveChannelController(IRCHandler handler, Channel channel, JibIRC irc){
+    public LeavePrivateMessageController(PrivateMessage pm, IRCHandler handler, JibIRC irc){
+        this.pm = pm;
         this.handler = handler;
-        this.channel = channel;
         this.irc = irc;
     }
     
     public void actionPerformed(ActionEvent ae){
-        if(channel.toString().startsWith("#")){
-            handler.sendCommand("/PART " + channel);
-        }else{
-            irc.leaveChannel(channel.toString());
-        }
+        JButton button = (JButton)ae.getSource();
+        Channel channel = (Channel)button.getParent();
+        irc.leaveChannel(channel.toString());
     }
     
 }

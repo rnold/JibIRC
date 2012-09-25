@@ -6,6 +6,7 @@ package jibIRC;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JList;
 
 /**
  *
@@ -20,8 +21,10 @@ public class CreatePMController extends MouseAdapter{
     
     @Override
     public void mouseClicked(MouseEvent me){
+        JList userList = (JList)me.getSource();
+        String channelName = (String)userList.getSelectedValue();
         if(me.getClickCount() == 2){
-            irc.createPM();
+            irc.joinPrivateMessage(channelName);
         }
         
     }

@@ -55,7 +55,8 @@ public class JibIRCTest {
     public void testJoinChannel(){
         String channelName = "#GameReaper";
         JibIRC irc = new JibIRC(null);
-        irc.joinChannel(channelName);
+        Channel channel = new PublicChannel(channelName, null, null);
+        irc.joinChannel(channel);
         if(irc.channelBoxes.get(channelName) == null){
             fail();
         }
@@ -70,7 +71,8 @@ public class JibIRCTest {
     public void testCreateChannel(){
         String channelName = "#GameReaper";
         JibIRC irc = new JibIRC(null);
-        irc.createChannel(channelName);
+        Channel channel = new PublicChannel(channelName, null, null);
+        irc.createChannel(channel);
         assertTrue(irc.channelExists(channelName));
     }
     
@@ -79,10 +81,9 @@ public class JibIRCTest {
         String channelName = "#GameReaper";
         String username = "JibTest";
         JibIRC irc = new JibIRC(null);
-        irc.createChannel(channelName);
+        Channel channel = new PublicChannel(channelName, null, null);
+        irc.createChannel(channel);
         irc.addUser(channelName, username);
-        
-        Channel channel = irc.channelBoxes.get(channelName);
         assertTrue(channel.userExists(username));
     }
     
@@ -91,10 +92,10 @@ public class JibIRCTest {
         String channelName = "#GameReaper";
         String userName = "JibTest";
         JibIRC irc = new JibIRC(null);
-        irc.createChannel(channelName);
+        Channel channel = new PublicChannel(channelName, null, null);
+        irc.createChannel(channel);
         irc.addUser(channelName, userName);
         irc.removeUser(channelName, userName);
-        Channel channel = irc.channelBoxes.get(channelName);
         assertFalse(channel.userExists(userName));
     }
     
@@ -102,8 +103,10 @@ public class JibIRCTest {
     public void testChangeChannel(){
         String channelName = "#GameReaper";
         JibIRC irc = new JibIRC(null);
-        irc.createChannel(channelName);
-        irc.createChannel("#bye");
+        Channel channel = new PublicChannel(channelName, null, null);
+        Channel channel2 = new PublicChannel("#bye", null, null);
+        irc.createChannel(channel);
+        irc.createChannel(channel2);
         irc.switchToChannel(channelName);
         assertEquals(channelName, irc.getActiveChannelName());
     }
@@ -112,7 +115,7 @@ public class JibIRCTest {
     public void testLeaveChannel(){
         String channelName = "#GameReaper";
         JibIRC irc = new JibIRC(null);
-        irc.joinChannel(channelName);
+        irc.joinPublicChannel(channelName);
         assertTrue(irc.channelExists(channelName));
         assertEquals(channelName, irc.getActiveChannelName());
         irc.leaveChannel(channelName);
@@ -122,7 +125,7 @@ public class JibIRCTest {
     @Test
     public void putMessage(){
         JibIRC irc = new JibIRC(null);
-        irc.joinChannel("#GameReaper");
+        irc.joinPublicChannel("#GameReaper");
         irc.addMessage("#GameReaper", "this message should be added", "JibTest");
     }
     

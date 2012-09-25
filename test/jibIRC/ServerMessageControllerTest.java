@@ -169,7 +169,7 @@ public class ServerMessageControllerTest {
         }
         
         @Override
-        public void joinChannel(String channelName){
+        public void joinPublicChannel(String channelName){
             joinSuccess = true;
         }
         

@@ -31,7 +31,7 @@ public class ServerMessageController implements ActionListener {
                     handler.sendCommand("/PONG " + serverMessage.getParameters());
                 } else if (serverMessage.isJoinChannel()) {
                     if(serverMessage.getPrefix().equals(irc.getNick())){
-                        irc.joinChannel(serverMessage.getParameters());
+                        irc.joinPublicChannel(serverMessage.getParameters());
                     }else{
                         irc.addUser(serverMessage.getParameters(), serverMessage.getPrefix());
                     }
@@ -51,7 +51,7 @@ public class ServerMessageController implements ActionListener {
                     String username = serverMessage.getPrefix();
                     String parameters = serverMessage.getParameters();
                     if (!irc.channelExists(username)) {
-                        irc.joinChannel(username);
+                        irc.joinPrivateMessage(username);
                     }
                     irc.addMessage(username, parameters, username);
                 } else if (serverMessage.isUserList()) {

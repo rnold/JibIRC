@@ -46,6 +46,7 @@ public class IRCHandler {
         String blah = command.substring(1);
         out.println(blah);
 
+
     }
 
     public void quit(){
