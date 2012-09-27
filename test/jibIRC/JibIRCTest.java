@@ -68,6 +68,22 @@ public class JibIRCTest {
     }
     
     @Test
+    public void testChannelExists(){
+        String channelName = "#GameReaper";
+        JibIRC irc = new JibIRC(null);
+        Channel channel = new PublicChannel(channelName, null, null);
+        irc.joinChannel(channel);
+        assertTrue(irc.channelExists(channelName));
+    }
+    
+    @Test
+    public void testChannelDoesNotExist(){
+        String channelName = "#GameReaper";
+        JibIRC irc = new JibIRC(null);
+        assertFalse(irc.channelExists(channelName));
+    }
+    
+    @Test
     public void testCreateChannel(){
         String channelName = "#GameReaper";
         JibIRC irc = new JibIRC(null);
