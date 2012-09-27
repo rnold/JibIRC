@@ -5,6 +5,7 @@
 package jibIRC;
 
 import javax.swing.DefaultListModel;
+import javax.swing.text.DefaultCaret;
 
 /**
  *
@@ -19,11 +20,12 @@ public class PrivateMessage extends Channel{
     /**
      * Creates new form PublicChannel
      */
-    public PrivateMessage(String channelName, JibIRC irc, IRCHandler handler) {
+    public PrivateMessage(String channelName, IRCHandler handler, JibIRC irc) {
         this.channelName = channelName;
         this.irc = irc;
         initComponents();
         jButton1.addActionListener(new LeavePrivateMessageController(this, handler, irc));
+        messageBox.setEditable(false);
     }
 
     public void addMessage(String message){

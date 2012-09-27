@@ -5,19 +5,25 @@
 package jibIRC;
 
 import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  *
  * @author Welcome
  */
 public class ServerMessageController implements ActionListener {
-
     IRCHandler handler;
     JibIRC irc;
+    Timer timer;
 
     public ServerMessageController(IRCHandler handler, JibIRC irc) {
         this.handler = handler;
         this.irc = irc;
+    }
+    
+    public void startListeningForServerMessages(){
+        timer = new Timer(30, this);
+        timer.start();
     }
 
     //this isn't ugly at all.....
@@ -47,6 +53,9 @@ public class ServerMessageController implements ActionListener {
                     String parameters = serverMessage.getParameters();
                     String user = serverMessage.getPrefix();
                     irc.addMessage(command.split(" ")[1], parameters, user);
+                    if(parameters.contains(irc.getNick())){
+                        irc.alertUser();
+                    }
                 } else if (serverMessage.isPrivateMessage(irc.getNick())) {
                     String username = serverMessage.getPrefix();
                     String parameters = serverMessage.getParameters();

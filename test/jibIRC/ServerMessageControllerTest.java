@@ -131,6 +131,24 @@ public class ServerMessageControllerTest {
         assertTrue(irc.privMsgSuccess);
     }
     
+    @Test
+    public void testUserAlerter(){
+        IRCHandler handler = new AlerterHandler();
+        AlerterIRC irc = new AlerterIRC();
+        ServerMessageController instance = new ServerMessageController(handler, irc);
+        instance.actionPerformed(null);
+        assertTrue(irc.alerted);
+    }
+    
+    @Test
+    public void testUserNonAlert(){
+        IRCHandler handler = new NonAlerterHandler();
+        AlerterIRC irc = new AlerterIRC();
+        ServerMessageController instance = new ServerMessageController(handler, irc);
+        instance.actionPerformed(null);
+        assertFalse(irc.alerted);
+    }
+    
     class TestUserList extends JibIRC{
         ArrayList<String> users;
         
@@ -208,6 +226,24 @@ public class ServerMessageControllerTest {
         }
     }
     
+    class AlerterIRC extends JibIRC{
+        public boolean alerted = false;
+        public AlerterIRC(){
+            super(null);
+            nick = "JibTest";
+        }
+        
+        @Override
+        public void alertUser(){
+            alerted = true;
+        }
+        
+        @Override
+        public void addMessage(String channelName, String message, String user){
+            
+        }
+    }
+    
     class JoinHandler extends IRCHandler{
         
         @Override
@@ -229,6 +265,22 @@ public class ServerMessageControllerTest {
         @Override
         public String receiveMessage(){
             return ":jibril13!jibril_13@relic-mua211.theedge.ca PRIVMSG JibTest :dude";
+        }
+    }
+    
+    class AlerterHandler extends IRCHandler{
+        
+        @Override
+        public String receiveMessage(){
+            return ":jibril13!jibril_13@relic-mua211.theedge.ca PRIVMSG #cookies :dude JibTest you should be pinged";
+        }
+    }
+    
+    class NonAlerterHandler extends IRCHandler{
+        
+        @Override
+        public String receiveMessage(){
+            return ":jibril13!jibril_13@relic-mua211.theedge.ca PRIVMSG #cookies :dude bobdole you shouldnt be pinged";
         }
     }
 }

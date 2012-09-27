@@ -129,6 +129,7 @@ public class JibIRCTest {
         irc.addMessage("#GameReaper", "this message should be added", "JibTest");
     }
     
+    
 
     /**
      * Test of sendMessage method, of class JibIRC.
