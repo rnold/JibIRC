@@ -41,7 +41,7 @@ public class Integration {
     @Test
     public void testUserList(){
         TestHandler handler = new TestHandler();
-        JibIRC irc = new JibIRC(handler);
+        ServerPanel irc = new ServerPanel(null, null, null, null);
         irc.nick = "JibTest";
         ServerMessageController controller = new ServerMessageController(handler, irc);
         controller.actionPerformed(null);
@@ -51,13 +51,12 @@ public class Integration {
         Channel channel = irc.channelBoxes.get("#GameReaper");
         assertTrue(channel.userExists("JibTest"));
         assertTrue(channel.userExists("Jibril_13"));
-        irc.printChannels();
     }
     
     @Test
     public void testRelicText(){
         RelicTextHandler handler = new RelicTextHandler();
-        JibIRC irc = new JibIRC(handler);
+        ServerPanel irc = new ServerPanel(null, null, null, null);
         irc.nick = "JibTest";
         ServerMessageController controller = new ServerMessageController(handler, irc);
         do{

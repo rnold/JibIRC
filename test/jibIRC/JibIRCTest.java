@@ -5,6 +5,8 @@
 
 package jibIRC;
 
+import java.io.BufferedReader;
+import java.io.StringReader;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,119 +39,49 @@ public class JibIRCTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getMessage method, of class JibIRC.
-     */
-
-    /**
-     * Test of connect method, of class JibIRC.
-     */
-    
-
-    
-    
-    
-
+    @Test
+    public void testCreateServer(){
+        String serverName = "irc.relic.net";
+        String nick = "JibTest";
+        JibIRC irc = new JibIRC(null, null);
+        ServerPanel server = irc.createServer(serverName, nick);
+        assertTrue(server.getNick().equals("JibTest"));
+    }
     
     @Test
-    public void testJoinChannel(){
+    public void testAddServer(){
+        String serverName = "irc.relic.net";
+        String nick = "JibTest";
+        JibIRC irc = new JibIRC(null, null);
+        ServerPanel server = irc.createServer(serverName, nick);
+        irc.addServer(server);
+        assertTrue(irc.serverIsAdded(server));
+    }
+    
+    @Test
+    public void testGetDefaultSettings(){
+        BufferedReader reader = new BufferedReader(new StringReader("JibTest\nrnold\nirc.relic.net\n6667"));
+        DefaultSettings settings = DefaultSettings.getDefaultSettings(reader);
+        assertTrue(settings.getNick().equals("JibTest"));
+        assertTrue(settings.getName().equals("rnold"));
+        assertTrue(settings.getServerName().equals("irc.relic.net"));
+        assertTrue(settings.getPort().equals("6667"));
+    }
+    
+/*    @Test
+    public void testLeaveServer(){
+        String serverName = "irc.relic.net";
         String channelName = "#GameReaper";
         JibIRC irc = new JibIRC(null);
+        irc.server = serverName;
         Channel channel = new PublicChannel(channelName, null, null);
         irc.joinChannel(channel);
-        if(irc.channelBoxes.get(channelName) == null){
-            fail();
-        }
-        if(irc.channels.get(0) == null){
-            fail();
-        }
-        assertEquals(1, irc.channelBoxes.size());
-        assertTrue(irc.channelExists(channelName));
+        fail();
+        
     }
-    
-    @Test
-    public void testChannelExists(){
-        String channelName = "#GameReaper";
-        JibIRC irc = new JibIRC(null);
-        Channel channel = new PublicChannel(channelName, null, null);
-        irc.joinChannel(channel);
-        assertTrue(irc.channelExists(channelName));
-    }
-    
-    @Test
-    public void testChannelDoesNotExist(){
-        String channelName = "#GameReaper";
-        JibIRC irc = new JibIRC(null);
-        assertFalse(irc.channelExists(channelName));
-    }
-    
-    @Test
-    public void testCreateChannel(){
-        String channelName = "#GameReaper";
-        JibIRC irc = new JibIRC(null);
-        Channel channel = new PublicChannel(channelName, null, null);
-        irc.createChannel(channel);
-        assertTrue(irc.channelExists(channelName));
-    }
-    
-    @Test
-    public void testAddUser(){
-        String channelName = "#GameReaper";
-        String username = "JibTest";
-        JibIRC irc = new JibIRC(null);
-        Channel channel = new PublicChannel(channelName, null, null);
-        irc.createChannel(channel);
-        irc.addUser(channelName, username);
-        assertTrue(channel.userExists(username));
-    }
-    
-    @Test
-    public void testRemoveUser(){
-        String channelName = "#GameReaper";
-        String userName = "JibTest";
-        JibIRC irc = new JibIRC(null);
-        Channel channel = new PublicChannel(channelName, null, null);
-        irc.createChannel(channel);
-        irc.addUser(channelName, userName);
-        irc.removeUser(channelName, userName);
-        assertFalse(channel.userExists(userName));
-    }
-    
-    @Test
-    public void testChangeChannel(){
-        String channelName = "#GameReaper";
-        JibIRC irc = new JibIRC(null);
-        Channel channel = new PublicChannel(channelName, null, null);
-        Channel channel2 = new PublicChannel("#bye", null, null);
-        irc.createChannel(channel);
-        irc.createChannel(channel2);
-        irc.switchToChannel(channelName);
-        assertEquals(channelName, irc.getActiveChannelName());
-    }
-    
-    @Test
-    public void testLeaveChannel(){
-        String channelName = "#GameReaper";
-        JibIRC irc = new JibIRC(null);
-        irc.joinPublicChannel(channelName);
-        assertTrue(irc.channelExists(channelName));
-        assertEquals(channelName, irc.getActiveChannelName());
-        irc.leaveChannel(channelName);
-        assertFalse(irc.channelExists(channelName));
-    }
-    
-    @Test
-    public void putMessage(){
-        JibIRC irc = new JibIRC(null);
-        irc.joinPublicChannel("#GameReaper");
-        irc.addMessage("#GameReaper", "this message should be added", "JibTest");
-    }
-    
+*/
     
 
-    /**
-     * Test of sendMessage method, of class JibIRC.
-     */
 
 
 }

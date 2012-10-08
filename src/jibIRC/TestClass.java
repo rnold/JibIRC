@@ -5,6 +5,10 @@
 
 package jibIRC;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.StringReader;
+
 
 
 /**
@@ -12,11 +16,12 @@ package jibIRC;
  * @author Owner
  */
 public class TestClass {
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JibIRC frame = new JibIRC(new IRCHandler());
+                DefaultSettings settings = DefaultSettings.getDefaultSettings(getDefaultReader());
+                JibIRC frame = new JibIRC(new IRCHandler(), settings);
                 frame.setSize(800, 600);
                 frame.setVisible(true);
             }
@@ -26,4 +31,13 @@ public class TestClass {
 
     }
 
+    private static BufferedReader getDefaultReader() {
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader("default.txt"));
+        } catch (Exception e) {
+            reader = new BufferedReader(new StringReader("\n\n\n"));
+        }
+        return reader;
+    }
 }

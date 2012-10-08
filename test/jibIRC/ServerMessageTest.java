@@ -72,4 +72,15 @@ public class ServerMessageTest {
         ServerMessage message = new ServerMessage("", "PING", "razorzedge.relic.net");
         assertTrue(message.isPing());
     }
+    
+    @Test
+    public void testPrivMsgParse(){
+        String message = ":jibril13!jibril_13@relic-mua211.theedge.ca PRIVMSG #cookies :dude JibTest you should be pinged";
+        ServerMessage serverMessage = ServerMessage.getServerMessage(message);
+        assertEquals(serverMessage.getPrefix(), "jibril13!jibril_13@relic-mua211.theedge.ca");
+        assertEquals(serverMessage.getCommand(), "PRIVMSG");
+        assertEquals(serverMessage.getParameters().get(0), "#cookies");
+        assertEquals(serverMessage.getParameters().get(1), "dude JibTest you should be pinged");
+    }
+
 }

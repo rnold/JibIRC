@@ -5,7 +5,6 @@
 package jibIRC;
 
 import javax.swing.DefaultListModel;
-import javax.swing.text.DefaultCaret;
 
 /**
  *
@@ -19,10 +18,10 @@ public class PublicChannel extends Channel{
     /**
      * Creates new form PublicChannel
      */
-    public PublicChannel(String channelName, IRCHandler handler, JibIRC irc) {
+    public PublicChannel(String channelName, IRCHandler handler, ServerPanel irc) {
         this.channelName = channelName;
         initComponents();
-        jButton1.addActionListener(new LeavePublicChannelController(this, handler, irc));
+        jButton1.addActionListener(new LeavePublicChannelController(this, handler));
         usersList.addMouseListener(new CreatePMController(irc));
         messageBox.setEditable(false);
     }
@@ -49,9 +48,9 @@ public class PublicChannel extends Channel{
         model.removeElement(username);
     }
     
-    public boolean userExists(String userName){
+    public boolean userExists(String username){
         DefaultListModel userModel = (DefaultListModel)usersList.getModel();
-        return userModel.contains(userName);
+        return userModel.contains(username);
     }
     
     public String getSelectedUser(){

@@ -1,0 +1,4 @@
+JibTest
+rnold
+irc.relic.net
+6667

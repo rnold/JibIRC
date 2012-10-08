@@ -13,9 +13,9 @@ import javax.swing.JList;
  * @author Welcome
  */
 public class CreatePMController extends MouseAdapter{
-    JibIRC irc;
+    ServerPanel irc;
     
-    public CreatePMController(JibIRC irc){
+    public CreatePMController(ServerPanel irc){
         this.irc = irc;
     }
     
@@ -24,9 +24,25 @@ public class CreatePMController extends MouseAdapter{
         JList userList = (JList)me.getSource();
         String channelName = (String)userList.getSelectedValue();
         if(me.getClickCount() == 2){
-            irc.joinPrivateMessage(channelName);
+            String strippedChannelName = stripMode(channelName);
+            irc.joinPrivateMessage(strippedChannelName);
         }
         
+    }
+    
+    private String stripMode(String userName){
+        if(hasMode(userName)){
+            return userName.substring(1);
+        }
+        return userName;
+    }
+    
+    private boolean hasMode(String userName){
+        return userName.startsWith("@") ||
+                userName.startsWith("+") ||
+                userName.startsWith("&") ||
+                userName.startsWith("%") ||
+                userName.startsWith("~");
     }
     
 }

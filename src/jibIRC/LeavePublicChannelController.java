@@ -15,12 +15,10 @@ import javax.swing.JButton;
 public class LeavePublicChannelController implements ActionListener{
     PublicChannel publicChannel;
     IRCHandler handler;
-    JibIRC irc;
     
-    public LeavePublicChannelController(PublicChannel publicChannel, IRCHandler handler, JibIRC irc){
+    public LeavePublicChannelController(PublicChannel publicChannel, IRCHandler handler){
         this.publicChannel = publicChannel;
         this.handler = handler;
-        this.irc = irc;
     }
     
     public void actionPerformed(ActionEvent ae){

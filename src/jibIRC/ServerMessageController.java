@@ -13,12 +13,12 @@ import javax.swing.Timer;
  */
 public class ServerMessageController implements ActionListener {
     IRCHandler handler;
-    JibIRC irc;
+    ServerPanel server;
     Timer timer;
 
-    public ServerMessageController(IRCHandler handler, JibIRC irc) {
+    public ServerMessageController(IRCHandler handler, ServerPanel server) {
         this.handler = handler;
-        this.irc = irc;
+        this.server = server;
     }
     
     public void startListeningForServerMessages(){
@@ -30,41 +30,43 @@ public class ServerMessageController implements ActionListener {
     public void actionPerformed(java.awt.event.ActionEvent e) {
         String message = handler.receiveMessage();
         if (message != null) {
-            ServerMessageParser parser = ServerMessageParser.parse(message);
-            if (parser.isWellFormed()) {
-                ServerMessage serverMessage = new ServerMessage(parser.getPrefix(), parser.getCommand(), parser.getParameters());
+            ServerMessage serverMessage = ServerMessage.getNewMessage(message);
+            if (serverMessage.isWellFormed()) {
                 if (serverMessage.isPing()) {
-                    handler.sendCommand("/PONG " + serverMessage.getParameters());
+                    handler.sendCommand("/PONG " + serverMessage.getParameters().get(0));
                 } else if (serverMessage.isJoinChannel()) {
-                    if(serverMessage.getPrefix().equals(irc.getNick())){
-                        irc.joinPublicChannel(serverMessage.getParameters());
+                    User user = User.getUserFromPrefix(serverMessage.getPrefix());
+                    if(user.getUsername().equals(server.getNick())){
+                        server.joinPublicChannel(serverMessage.getParameters().get(0));
                     }else{
-                        irc.addUser(serverMessage.getParameters(), serverMessage.getPrefix());
+                        server.addUser(serverMessage.getParameters().get(0), user);
                     }
                 } else if (serverMessage.isLeaveChannel()) {
-                    if(serverMessage.getPrefix().equals(irc.getNick())){
+                    if(serverMessage.getPrefix().equals(server.getNick())){
                         String command = serverMessage.getCommand();
-                        irc.leaveChannel(command.split(" ")[1]);
+                        server.leaveChannel(command.split(" ")[1]);
                     }else{
-                        irc.removeUser(serverMessage.getParameters(), serverMessage.getPrefix());
+                        server.removeUser(serverMessage.getParameters().get(0), serverMessage.getPrefix());
                     }
                 } else if (serverMessage.isChannelMessage()) {
                     String command = serverMessage.getCommand();
-                    String parameters = serverMessage.getParameters();
+                    String parameters = serverMessage.getParameters().get(0);
                     String user = serverMessage.getPrefix();
-                    irc.addMessage(command.split(" ")[1], parameters, user);
-                    if(parameters.contains(irc.getNick())){
-                        irc.alertUser();
+                    server.addMessage(command.split(" ")[1], parameters, user);
+                    if(parameters.contains(server.getNick())){
+                        server.alertUser();
                     }
-                } else if (serverMessage.isPrivateMessage(irc.getNick())) {
+                } else if (serverMessage.isPrivateMessage(server.getNick())) {
                     String username = serverMessage.getPrefix();
-                    String parameters = serverMessage.getParameters();
-                    if (!irc.channelExists(username)) {
-                        irc.joinPrivateMessage(username);
+                    String parameters = serverMessage.getParameters().get(0);
+                    if (!server.channelExists(username)) {
+                        server.joinPrivateMessage(username);
                     }
-                    irc.addMessage(username, parameters, username);
+                    server.addMessage(username, parameters, username);
                 } else if (serverMessage.isUserList()) {
                     setUserList(serverMessage);
+                } else if (serverMessage.isNewUserList()){
+                    setNewUserList(serverMessage);
                 }
             }
         }
@@ -74,17 +76,32 @@ public class ServerMessageController implements ActionListener {
 
     public void setUserList(ServerMessage serverMessage) {
         System.out.println("userlist " + serverMessage);
-        String parameters = serverMessage.getParameters();
+        String parameters = serverMessage.getParameters().get(0);
         String[] splitParameters = parameters.split(" :");
         String channelName = splitParameters[0];
         String userList = splitParameters[1];
         String[] users = userList.split(" ");
-        if(!irc.channelExists(channelName)){
+        if(!server.channelExists(channelName)){
             System.err.println("error " + channelName);
             return;
         }
         for (int i = 0; i < users.length; i++) {
-            irc.addUser(channelName, users[i]);
+            User user = new User(users[i], "");
+            server.addUser(channelName, user);
+        }
+    }
+    
+    public void setNewUserList(ServerMessage serverMessage) {
+        String channelName = serverMessage.getParameters().get(2);
+        String userList = serverMessage.getParameters().get(3);
+        String[] users = userList.split(" ");
+        if(!server.channelExists(channelName)){
+            System.err.println("error " + channelName);
+            return;
+        }
+        for (int i = 0; i < users.length; i++) {
+            User user = new User(users[i], "");
+            server.addUser(channelName, user);
         }
     }
 }

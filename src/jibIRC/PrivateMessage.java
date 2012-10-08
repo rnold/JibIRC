@@ -13,14 +13,14 @@ import javax.swing.text.DefaultCaret;
  */
 public class PrivateMessage extends Channel{
     
-    JibIRC irc;
+    ServerPanel irc;
     DefaultListModel currentChannelUsers;
     String channelName;
 
     /**
      * Creates new form PublicChannel
      */
-    public PrivateMessage(String channelName, IRCHandler handler, JibIRC irc) {
+    public PrivateMessage(String channelName, IRCHandler handler, ServerPanel irc) {
         this.channelName = channelName;
         this.irc = irc;
         initComponents();

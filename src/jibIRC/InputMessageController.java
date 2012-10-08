@@ -13,9 +13,9 @@ import java.awt.event.ActionListener;
  */
 public class InputMessageController implements ActionListener{
     IRCHandler handler;
-    JibIRC irc;
+    ServerPanel irc;
     
-    public InputMessageController(IRCHandler handler, JibIRC irc){
+    public InputMessageController(IRCHandler handler, ServerPanel irc){
         this.handler = handler;
         this.irc = irc;
     }
@@ -29,8 +29,6 @@ public class InputMessageController implements ActionListener{
             irc.addMessage(irc.getActiveChannelName(), contents, irc.getNick());
         }
         irc.resetInputBox();
-
-        irc.getContentPane().repaint();
 
     }
     

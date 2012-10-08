@@ -15,9 +15,9 @@ import javax.swing.JButton;
 public class LeavePrivateMessageController implements ActionListener{
     PrivateMessage pm;
     IRCHandler handler;
-    JibIRC irc;
+    ServerPanel irc;
     
-    public LeavePrivateMessageController(PrivateMessage pm, IRCHandler handler, JibIRC irc){
+    public LeavePrivateMessageController(PrivateMessage pm, IRCHandler handler, ServerPanel irc){
         this.pm = pm;
         this.handler = handler;
         this.irc = irc;

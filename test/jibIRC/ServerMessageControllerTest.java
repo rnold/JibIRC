@@ -149,17 +149,17 @@ public class ServerMessageControllerTest {
         assertFalse(irc.alerted);
     }
     
-    class TestUserList extends JibIRC{
+    class TestUserList extends ServerPanel{
         ArrayList<String> users;
         
         public TestUserList(IRCHandler handler){
-            super(null);
+            super(null, null, null, null);
             users = new ArrayList<String>();
         }
         
         @Override
-        public void addUser(String channelName, String user){
-            users.add(user);
+        public void addUser(String channelName, User user){
+            users.add(user.getUsername());
         }
         
         @Override
@@ -172,17 +172,17 @@ public class ServerMessageControllerTest {
         }
     }
     
-    class TestJoinChannel extends JibIRC{
+    class TestJoinChannel extends ServerPanel{
         public boolean joinSuccess = false;
         public boolean addSuccess = false;
         
         public TestJoinChannel(IRCHandler handler){
-            super(handler);
+            super(null, null, null, null);
             nick = "uguysaremean";
         }
         
         public TestJoinChannel(IRCHandler handler, String nick){
-            super(handler);
+            super(null, null, null, null);
             this.nick = nick;
         }
         
@@ -197,7 +197,7 @@ public class ServerMessageControllerTest {
         }
         
         @Override
-        public void addUser(String channelName, String username){
+        public void addUser(String channelName, User user){
             addSuccess = true;
         }
         
@@ -208,10 +208,10 @@ public class ServerMessageControllerTest {
         
     }
     
-    class TestPrivMsg extends JibIRC{
+    class TestPrivMsg extends ServerPanel{
         public boolean privMsgSuccess = false;
         public TestPrivMsg(){
-            super(null);
+            super(null, null, null, null);
             nick = "JibTest";
         }
         
@@ -226,10 +226,10 @@ public class ServerMessageControllerTest {
         }
     }
     
-    class AlerterIRC extends JibIRC{
+    class AlerterIRC extends ServerPanel{
         public boolean alerted = false;
         public AlerterIRC(){
-            super(null);
+            super(null, null, null, null);
             nick = "JibTest";
         }
         
