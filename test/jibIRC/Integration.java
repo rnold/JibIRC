@@ -49,8 +49,10 @@ public class Integration {
         
         assertTrue(irc.channelExists("#GameReaper"));
         Channel channel = irc.channelBoxes.get("#GameReaper");
-        assertTrue(channel.userExists("JibTest"));
-        assertTrue(channel.userExists("Jibril_13"));
+        User JibTest = User.getUserFromList("JibTest");
+        User Jibril_13 = User.getUserFromList("Jibril_13");
+        assertTrue(channel.userExists(JibTest));
+        assertTrue(channel.userExists(Jibril_13));
     }
     
     @Test
@@ -65,7 +67,8 @@ public class Integration {
         
         assertTrue(irc.channelExists("#GameReaper"));
         Channel channel = irc.channelBoxes.get("#GameReaper");
-        assertTrue(channel.userExists("+supapaint"));
+        User supapaint = User.getUserFromList("+supapaint");
+        assertTrue(channel.userExists(supapaint));
         
         
     }

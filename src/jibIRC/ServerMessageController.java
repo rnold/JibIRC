@@ -30,7 +30,7 @@ public class ServerMessageController implements ActionListener {
     public void actionPerformed(java.awt.event.ActionEvent e) {
         String message = handler.receiveMessage();
         if (message != null) {
-            ServerMessage serverMessage = ServerMessage.getNewMessage(message);
+            ServerMessage serverMessage = ServerMessage.getServerMessage(message);
             if (serverMessage.isWellFormed()) {
                 if (serverMessage.isPing()) {
                     handler.sendCommand("/PONG " + serverMessage.getParameters().get(0));
@@ -42,56 +42,44 @@ public class ServerMessageController implements ActionListener {
                         server.addUser(serverMessage.getParameters().get(0), user);
                     }
                 } else if (serverMessage.isLeaveChannel()) {
-                    if(serverMessage.getPrefix().equals(server.getNick())){
-                        String command = serverMessage.getCommand();
-                        server.leaveChannel(command.split(" ")[1]);
+                    User user = User.getUserFromPrefix(serverMessage.getPrefix());
+                    if(user.getUsername().equals(server.getNick())){
+                        server.leaveChannel(serverMessage.getParameters().get(0));
                     }else{
-                        server.removeUser(serverMessage.getParameters().get(0), serverMessage.getPrefix());
+                        server.removeUser(serverMessage.getParameters().get(0), user);
                     }
                 } else if (serverMessage.isChannelMessage()) {
-                    String command = serverMessage.getCommand();
-                    String parameters = serverMessage.getParameters().get(0);
-                    String user = serverMessage.getPrefix();
-                    server.addMessage(command.split(" ")[1], parameters, user);
-                    if(parameters.contains(server.getNick())){
+                    String channelName = serverMessage.getParameters().get(0);
+                    String channelMessage = serverMessage.getParameters().get(1);
+                    User user = User.getUserFromPrefix(serverMessage.getPrefix());
+                    server.addMessage(channelName, channelMessage, user.getUsername());
+                    if(channelMessage.contains(server.getNick())){
                         server.alertUser();
                     }
                 } else if (serverMessage.isPrivateMessage(server.getNick())) {
-                    String username = serverMessage.getPrefix();
-                    String parameters = serverMessage.getParameters().get(0);
-                    if (!server.channelExists(username)) {
-                        server.joinPrivateMessage(username);
+                    User user = User.getUserFromPrefix(serverMessage.getPrefix());
+                    String privMsg = serverMessage.getParameters().get(1);
+                    if (!server.channelExists(user.getUsername())) {
+                        server.joinPrivateMessage(user.getUsername());
                     }
-                    server.addMessage(username, parameters, username);
-                } else if (serverMessage.isUserList()) {
+                    server.addMessage(user.getUsername(), privMsg, user.getUsername());
+                } else if (serverMessage.isUserList()){
                     setUserList(serverMessage);
-                } else if (serverMessage.isNewUserList()){
-                    setNewUserList(serverMessage);
+                } else if (serverMessage.isQuit()){
+                    User leavingUser = User.getUserFromPrefix(serverMessage.getPrefix());
+                    server.removeUserFromAllChannels(leavingUser);
+                } else if(serverMessage.isChannelMode()){
+                    changeUsersMode(serverMessage);
+                } else if(serverMessage.isNickChange()){
+                    //changeNick(serverMessage);
                 }
             }
         }
         
 
     }
-
-    public void setUserList(ServerMessage serverMessage) {
-        System.out.println("userlist " + serverMessage);
-        String parameters = serverMessage.getParameters().get(0);
-        String[] splitParameters = parameters.split(" :");
-        String channelName = splitParameters[0];
-        String userList = splitParameters[1];
-        String[] users = userList.split(" ");
-        if(!server.channelExists(channelName)){
-            System.err.println("error " + channelName);
-            return;
-        }
-        for (int i = 0; i < users.length; i++) {
-            User user = new User(users[i], "");
-            server.addUser(channelName, user);
-        }
-    }
     
-    public void setNewUserList(ServerMessage serverMessage) {
+    public void setUserList(ServerMessage serverMessage) {
         String channelName = serverMessage.getParameters().get(2);
         String userList = serverMessage.getParameters().get(3);
         String[] users = userList.split(" ");
@@ -100,8 +88,22 @@ public class ServerMessageController implements ActionListener {
             return;
         }
         for (int i = 0; i < users.length; i++) {
-            User user = new User(users[i], "");
+            User user = User.getUserFromList(users[i]);
             server.addUser(channelName, user);
         }
+    }
+    
+    public void changeUsersMode(ServerMessage serverMessage) {
+        //remove old user
+        User user = User.getUserFromList(serverMessage.getParameters().get(2));
+        server.removeUser(serverMessage.getParameters().get(0), user);
+        //add new user
+        user = user.modifyMode(serverMessage.getParameters().get(1));
+        server.addUser(serverMessage.getParameters().get(0), user);
+    }
+    
+    public void changeNick(ServerMessage serverMessage){
+        User user = User.getUserFromPrefix(serverMessage.getPrefix());
+        String newUsername = serverMessage.getParameters().get(0);
     }
 }

@@ -19,7 +19,8 @@ public class IRCHandler {
 
     private Socket socket;
     private PrintWriter out;
-    private BufferedReader in;   
+    private BufferedReader in;
+    private PrintWriter fileOut;
 
     public boolean connect(String server, int port, String nick, String name){
         try{
@@ -29,6 +30,8 @@ public class IRCHandler {
 
             out.println("NICK " + nick);
             out.println("USER " + nick + " " + nick + " " + server + " :" + name);
+            
+            fileOut = new PrintWriter("log.txt");
             //out.println("PROTOCTL NAMESX");
             return true;
         }catch(UnknownHostException e){
@@ -51,6 +54,8 @@ public class IRCHandler {
 
     public void quit(){
         out.println("QUIT :Insert reason here");
+        fileOut.close();
+        out.close();
     }
 
 
@@ -60,6 +65,7 @@ public class IRCHandler {
             if(in.ready()){
                 String what = in.readLine();
                 System.out.println(what);
+                fileOut.append(what + System.lineSeparator());
                 return what;
             }else{
                 return null;

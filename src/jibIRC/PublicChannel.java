@@ -30,33 +30,59 @@ public class PublicChannel extends Channel{
         messageBox.append(message);
     }
     
-    public void addUser(String username){
+    public void addUser(User user){
         DefaultListModel model = (DefaultListModel)usersList.getModel();
-        String comparedTo;
+        User comparedTo;
         int i;
         for(i = 0; i < model.size(); i++){
-            comparedTo = (String)model.get(i);
-            if(comparedTo.compareTo(username) > 0){
+            comparedTo = (User)model.get(i);
+            if(user.compareTo(comparedTo) > 0){
                 break;
             }
         }
-        model.add(i, username);
+        model.add(i, user);
     }
     
-    public void removeUser(String username){
+    public void removeUser(User user){
         DefaultListModel model = (DefaultListModel) usersList.getModel();
-        model.removeElement(username);
+        if(model.contains(user)){
+            model.removeElement(user);
+        }
     }
     
-    public boolean userExists(String username){
+    public void changeUserNick(User user, String newUsername){
+        try{
+        if(userExists(user)){
+            String userMode = getUserMode(user);
+            User newUser = new User(newUsername, "", userMode);
+            this.removeUser(user);
+            this.addUser(newUser);         
+        }
+        }catch(Exception e){
+            System.err.println("nick trying to be changed when user does not even exist!");
+        }
+    }
+    
+    public String getUserMode(User user) throws Exception{
         DefaultListModel userModel = (DefaultListModel)usersList.getModel();
-        return userModel.contains(username);
+        for(int i = 0; i < userModel.getSize(); i++){
+            User user2 = (User)userModel.get(i);
+            if(user.equals(user2)){
+                return user2.getMode();
+            }
+        }
+        throw new Exception();
     }
     
-    public String getSelectedUser(){
+    public boolean userExists(User user){
+        DefaultListModel userModel = (DefaultListModel)usersList.getModel();
+        return userModel.contains(user);
+    }
+    
+    public User getSelectedUser(){
         int index = usersList.getSelectedIndex();
         DefaultListModel userModel = (DefaultListModel)usersList.getModel();
-        return (String)userModel.get(index);
+        return (User)userModel.get(index);
     }
     
     @Override

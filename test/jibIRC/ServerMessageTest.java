@@ -37,14 +37,6 @@ public class ServerMessageTest {
     }
 
     @Test
-    public void testUsers(){
-        ServerMessage message = new ServerMessage("", "USERS", "#GameReaper :+jibril @cookies");
-        assertTrue(message.isUserList());
-    }
-    
-
-    
-    @Test
     public void testIfJoinMessage(){
         ServerMessage message = new ServerMessage("JibTest", "JOIN", "#hibob");
         if(!message.isJoinChannel()){

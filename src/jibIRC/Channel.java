@@ -12,8 +12,9 @@ import javax.swing.JPanel;
  */
 public abstract class Channel extends JPanel{
     public abstract void addMessage(String message);
-    public abstract void addUser(String username);
-    public abstract void removeUser(String username);
-    public abstract boolean userExists(String userName);
-    public abstract String getSelectedUser();
+    public abstract void addUser(User user);
+    public abstract void removeUser(User user);
+    public abstract boolean userExists(User user);
+    public abstract User getSelectedUser();
+    public abstract void changeUserNick(User user, String newUsername);
 }

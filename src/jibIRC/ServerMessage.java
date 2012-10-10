@@ -146,11 +146,11 @@ public class ServerMessage {
     }
     
     public boolean isChannelMessage(){
-        return command.matches("PRIVMSG #\\w+");
+        return command.equals("PRIVMSG") && parameters.get(0).startsWith("#");
     }
     
     public boolean isPrivateMessage(String nick){
-        return command.matches("PRIVMSG " + nick);
+        return command.equals("PRIVMSG") && parameters.get(0).equals(nick);
     }
     
     public boolean isPing(){
@@ -162,11 +162,19 @@ public class ServerMessage {
     }
     
     public boolean isUserList(){
-        return command.equals("USERS");
+        return command.equals("353");
     }
     
-    public boolean isNewUserList(){
-        return command.equals("353");
+    public boolean isChannelMode(){
+        return command.equals("MODE") && parameters.get(0).startsWith("#");
+    }
+    
+    public boolean isQuit(){
+        return command.equals("QUIT");
+    }
+    
+    public boolean isNickChange(){
+        return command.equals("NICK");
     }
     
     public boolean isWellFormed(){

@@ -89,17 +89,30 @@ public class ServerPanel extends javax.swing.JPanel {
     
     public void addUser(String channelName, User user) {
         Channel currentChannel = channelBoxes.get(channelName);
-        currentChannel.addUser(user.getUsername());
+        currentChannel.addUser(user);
 
     }
 
-    public void removeUser(String channelName, String username) {
+    public void removeUser(String channelName, User user) {
         Channel currentChannel = channelBoxes.get(channelName);
-        if (currentChannel.userExists(username)) {
-            currentChannel.removeUser(username);
+        if (currentChannel.userExists(user)) {
+            currentChannel.removeUser(user);
         } else {
             System.err.println("removeUser called when user doesn't exist: This should never happen!");
         }
+    }
+    
+    public void removeUserFromAllChannels(User user){
+        for(Channel channel : channelBoxes.values()){
+            channel.removeUser(user);
+        }
+    }
+    
+    public void changeNickForAllChannels(User user, String newUsername){
+        for(Channel channel : channelBoxes.values()){
+            channel.changeUserNick(user, newUsername);
+        }
+        
     }
     
     public void alertUser() {

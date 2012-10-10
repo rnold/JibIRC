@@ -24,7 +24,7 @@ public class PrivateMessage extends Channel{
         this.channelName = channelName;
         this.irc = irc;
         initComponents();
-        jButton1.addActionListener(new LeavePrivateMessageController(this, handler, irc));
+        jButton1.addActionListener(new LeavePrivateMessageController(irc));
         messageBox.setEditable(false);
     }
 
@@ -32,20 +32,24 @@ public class PrivateMessage extends Channel{
         messageBox.append(message);
     }
     
-    public void addUser(String username){
+    public void addUser(User user){
 
     }
     
-    public void removeUser(String username){
+    public void removeUser(User user){
 
     }
     
-    public boolean userExists(String userName){
+    public boolean userExists(User user){
         return false;
     }
     
-    public String getSelectedUser(){
-        return "";
+    public User getSelectedUser(){
+        return null;
+    }
+    
+    public void changeUserNick(User user, String newUsername){
+        
     }
     
     @Override

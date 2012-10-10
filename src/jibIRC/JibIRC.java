@@ -242,13 +242,13 @@ public class JibIRC extends javax.swing.JFrame {
         getContentPane().repaint();
     }
 
-
-
     public void alertUser() {
-        Image image = getAlertIcon();
-        this.setIconImage(image);
-        this.revalidate();
-        this.repaint();
+        if (!this.hasFocus()) {
+            Image image = getAlertIcon();
+            this.setIconImage(image);
+            this.revalidate();
+            this.repaint();
+        }
 
     }
 

@@ -1,0 +1,315 @@
+:razorzedge.relic.net NOTICE Auth :*** Looking up your hostname...
+:razorzedge.relic.net NOTICE Auth :*** Found your hostname (d216-108-168-26.theedge.ca) -- cached
+:razorzedge.relic.net NOTICE Auth :Welcome to RelicNet!
+:razorzedge.relic.net 001 Jibril13 :Welcome to the RelicNet IRC Network Jibril13!Jibril13@d216-108-168-26.theedge.ca
+:razorzedge.relic.net 002 Jibril13 :Your host is razorzedge.relic.net, running version InspIRCd-2.0
+:razorzedge.relic.net 003 Jibril13 :This server was created 20:45:18 Aug  1 2011
+:razorzedge.relic.net 004 Jibril13 razorzedge.relic.net InspIRCd-2.0 BHIRScdhikorswx ABCFIKLMNOQRSTabcefghijklmnopqrstvz FILabefghjkloqv
+:razorzedge.relic.net 005 Jibril13 AWAYLEN=201 CASEMAPPING=rfc1459 CHANMODES=Ibeg,k,FLfjl,ABCKMNOQRSTcimnprstz CHANTYPES=# CHARSET=ascii ELIST=MU EXCEPTS=e EXTBAN=,ABCNOQRSTcmprz FNC INVEX=I KICKLEN=256 MAP MAXBANS=60 :are supported by this server
+:razorzedge.relic.net 005 Jibril13 MAXCHANNELS=40 MAXPARA=32 MAXTARGETS=20 MODES=20 NAMESX NETWORK=RelicNet NICKLEN=32 OPERLOG OVERRIDE PREFIX=(qaohv)~&@%+ SSL=173.255.236.126:6697;173.255.236.126:7000 STARTTLS STATUSMSG=~&@%+ :are supported by this server
+:razorzedge.relic.net 005 Jibril13 TOPICLEN=358 UHNAMES USERIP VBANLIST WALLCHOPS WALLVOICES WATCH=32 :are supported by this server
+:razorzedge.relic.net 042 Jibril13 431AAATD1 :your unique ID
+:razorzedge.relic.net 375 Jibril13 :razorzedge.relic.net message of the day
+:razorzedge.relic.net 376 Jibril13 :End of message of the day.
+:razorzedge.relic.net 251 Jibril13 :There are 46 users and 34 invisible on 8 servers
+:razorzedge.relic.net 252 Jibril13 9 :operator(s) online
+:razorzedge.relic.net 254 Jibril13 60 :channels formed
+:razorzedge.relic.net 255 Jibril13 :I have 16 clients and 1 servers
+:razorzedge.relic.net 265 Jibril13 :Current Local Users: 16  Max: 28
+:razorzedge.relic.net 266 Jibril13 :Current Global Users: 80  Max: 106
+:razorzedge.relic.net 396 Jibril13 relic-mua211.theedge.ca :is now your displayed host
+:Jibril13!Jibril13@relic-mua211.theedge.ca MODE Jibril13 +x
+:razorzedge.relic.net 474 Jibril13 #lobby :Cannot join channel (You're banned)
+:Global!services@relic.net NOTICE Jibril13 :[Logon News - May 19 2003] Welcome To RelicNET!
+:Global!services@relic.net NOTICE Jibril13 :[Logon News - Nov 15 2005] Upon Connecting to this network you will be scanned for insecure proxies. Please do not be alarmed as this is a general procedure. RELICNET Staff.
+:Global!services@relic.net NOTICE Jibril13 :[Logon News - Apr 06 2008] Relic.NET Welcomes Tauri.Relic.Net as Relic.Net's 1st SSL only irc server. /server tauri.relic.net +7000 for Access! Thanks for Flying Relic.Net
+:NickServ!services@relic.net NOTICE Jibril13 :This nickname is registered and protected.  If it is your
+:NickServ!services@relic.net NOTICE Jibril13 :nick, type /msg NickServ IDENTIFY password.  Otherwise,
+:NickServ!services@relic.net NOTICE Jibril13 :please choose a different nick.
+:Jibril13!Jibril13@relic-mua211.theedge.ca JOIN :#GameReaper
+:razorzedge.relic.net 332 Jibril13 #GameReaper :visit www.gamereaper.net for the latest news, reviews and community chat. 4,1Ladies and Gents, We now have our own channel on our New Zealand Teamspeak server (11,1ts.vgn.co.nz4) so come and have a chat in channel 11GameReaper
+:razorzedge.relic.net 333 Jibril13 #GameReaper rsm 1340671607
+:razorzedge.relic.net 353 Jibril13 = #GameReaper :&GameReaper +iniquity +supapaint %aroldao ~Mayhemisis +Metallica %KG +ubi_21 +Hen-lap %lionelione43 @Apollo +inferna @Zoen ~Anthrax +aeon +tomt00001 +Worseley +Akatath +evilMonkey +matrix12 &alogwe Jibril13 
+:razorzedge.relic.net 366 Jibril13 #GameReaper :End of /NAMES list.
+:Anthrax!Anthrax@Epic.Winning MODE #GameReaper +v Jibril13
+PING :razorzedge.relic.net
+:iniquity!iniquity@bonsai.no.koneko PRIVMSG #GameReaper :Lordy.
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :ACTION hides.
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+:Mayhemisis!Mayhem@GameReaper.net PRIVMSG #GameReaper :11 Notice 12 12�11 Please check this out 7http://gamereaper.net/ 11ISO winners :P 12�
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Path of Exile + Pjanoo = woo.  XD
+PING :razorzedge.relic.net
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :http://www.youtube.com/watch?v=b_0k6rDDpVo
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Eh
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :im with Zoen
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :i jam rock like s.o.a.d to mmo's
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :techno and variations to arpg's
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Gangnam Style is about as catchy as Nyan Cat, lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :is that what thats called
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :What Jibril linked, yeah
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :oh
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :this is my favorite style and coincidentally one of my favorite songs
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :http://www.youtube.com/watch?v=n9rCW1CuSUA
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Gangnam Style is the current music fad
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :im not much for fads
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :And now Path of Exile starts to enter cheap mode
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Went from 400 HP to 0 HP before I could so much as use a potion
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :howd that happen
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Apparently getting attacked by 3 enemies and a fireball at the same time
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :thats it?!
+:rsm!ident@relic-leasde.abhsia.telus.net JOIN :#GameReaper
+:GameReaper!Game@Reaper.net MODE #GameReaper +o rsm
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning MODE #GameReaper +v rsm
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :randy!!
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Kinda like how I got killed by Brutus' ground smash while being nowhere near it
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+:rsm!ident@relic-leasde.abhsia.telus.net PRIVMSG #GameReaper :hi
+:clonejen!clonejen@relic-4el1b2.hlrn.qwest.net JOIN :#GameReaper
+:GameReaper!Game@Reaper.net MODE #GameReaper +v clonejen
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ive been lucky on hc
+:rsm!ident@relic-leasde.abhsia.telus.net PRIVMSG #GameReaper :wb clonejen
+:clonejen!clonejen@relic-4el1b2.hlrn.qwest.net PRIVMSG #GameReaper :wb
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :brutus has yet to kill me
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :twice @ hailrake once at ship cave
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :...and now 3-shotted by Chatters.  <_<
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :how things lady and gent
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :poor zoen
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :do u need help?
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Apparently 23% reduction, 593 HP, 155 ES, and 55% cold res = 3 hit kill
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :what lvl r ya now
+PING :razorzedge.relic.net
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :32
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :mmm
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :iso some power lvling glitches
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Now use a potion and die
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :use a potion b4 u fight
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :If the game's going to continue being this cheap, I'm about to go make a Cleave 1 hander
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :flask effect lasts even after full hp
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+PING :razorzedge.relic.net
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :hey friends :)
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :how's everyone?
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :alogweeeee!!'
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :good and urself
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :ACTION hugs Anthrax :D
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :good thanksl
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :thanks*
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ACTION hugs alogwe
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :just got home
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :cool
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :It's like a majority of the monsters are designed to punish melees for using 2 handers when half of the good skills REQUIRE a 2 hander
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :haha yea
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :i was working at this farm today and got to see a bunch of emus and peacocks
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :it was fun :)
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :O.o
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :peacocks are cool, idk bout emu
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :i fed one of the peacocks
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :but it wouldn't eat out of my hand
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :heh
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :im having beer at 11:30 in the morning
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :only a 10%'er
+:rsm!ident@relic-leasde.abhsia.telus.net PRIVMSG #GameReaper :heh
+:Zeus!Zeus@Thunder.God.Of.Awesome JOIN :#GameReaper
+:GameReaper!Game@Reaper.net MODE #GameReaper +o Zeus
+:Anthrax!Anthrax@Epic.Winning MODE #GameReaper +v Zeus
+PING :razorzedge.relic.net
+:East-Bot!PircBot@relic-cifh65.xtra.co.nz JOIN :#GameReaper
+:GameReaper!Game@Reaper.net MODE #GameReaper +o East-Bot
+:Anthrax!Anthrax@Epic.Winning MODE #GameReaper +v East-Bot
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :wish bots would stay online
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :yeah
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :zeus is the worst one
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :my desktop is almost half full of icons again
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ACTION sighs
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :iso upgrades
+PING :razorzedge.relic.net
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :See, there it goes again hitting me with multiple attacks at the same time and killing me instantly
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper ::(
+:iniquity!iniquity@bonsai.no.koneko PRIVMSG #GameReaper :ACTION starts shuffling cards
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :NLHE
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :O.o
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ACTION wonders if iniquity wants to play poker
+:iniquity!iniquity@bonsai.no.koneko PRIVMSG #GameReaper :thanks
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ACTION wonders if iniquity wants to play poker
+:iniquity!iniquity@bonsai.no.koneko PRIVMSG #GameReaper :ACTION replaies Anthrax in return
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :tf iniquity
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :http://imgur.com/gallery/3bJDw
+:alogwe!andrew@relic-dc2.u9v.98.74.IP PRIVMSG #GameReaper :neat idea!
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :...realm restart in 5 minutes.  >_>
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :thats cool
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Lol
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :0.9.12qq, they nerf Ethereal Knives.  0.9.12s, they buff Ethereal Knives.
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :haha
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :s coming now?
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :or is it r still
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :s
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :i get lost
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :to many patches
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :http://www.pathofexile.com/forum/view-thread/53253
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :Website is restarting in:
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :00:02:49
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :. It should be back up within a minute.
+PING :razorzedge.relic.net
+PING :razorzedge.relic.net
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :They're still much faster than Blizzard on patches, lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :true
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Blizzard:  LADDER RESET, DOWN FOR 6 HOURS
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :GGG:  Ladder migration...1 minute. :D
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Major patch...2 minutes.  :D
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :however
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :no need for mule chars with poe
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :People still use them
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :take a lot of stress out of it
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :well not so much
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Apparently 4 stash tabs of a 12x12 grid isn't enough
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :i have 7
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :i havent filled them all yet
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :At least the migration made it easier for me to re-organize my tab setup
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :hehe yea
+PING :razorzedge.relic.net
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :I was filling up my tabs with just char to level 20. :p
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :bit of experience goes a long way
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :one char*
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :i dont get how
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Tab 1, currency items. Tab 2, gems. Tab 3, quality gems and items I may find useful on new characters. Tab 4, Uniques.
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :unless u keep every crap rare
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :Stuff for alt chars
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :^
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :k
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Got a 127 life regen amulet in my stash, lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :not bad
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :what lvl
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :3 or something low
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :wow nice
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :highest ive seen is around 90-100
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :NO level
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :quality 20%?
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :65 life regen, 10 max life, 67 life regen, level 1 requirement, lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :haha
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :nice
+PING :razorzedge.relic.net
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :So a little over 2 life per second
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :not bad
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :especially for lvl
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper ::( Anthrax how was Bassius in d2?
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :this is good song for poe
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :http://www.youtube.com/watch?v=STHS8MTOsco
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Already have 1 quality gem, 6% though
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :wum?
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :Well, I mean
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :...in D3 I've seen him stick 5 million gold gems in armors worth 50k
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :bassius is a perfectionist
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :u should get him on here
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :chars with total costs over 200m gold that can't handle what my 5m gold chars can
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :i havent seen him in ages
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :he is a definate showoff
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :I think he's just trying to shove money into it to make things work
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :ah
+PING :razorzedge.relic.net
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :he is good at pvp
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :not pvm
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :ah
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :rly good at pvp actually
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :one of the top ive seen
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :especially barb and pally
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ive raped him on necro though
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :dont think he plays catser
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :caster*
+:coLdduff!human@relic-3itovp.wa.comcast.net JOIN :#GameReaper
+:GameReaper!Game@Reaper.net MODE #GameReaper +v coLdduff
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :but yeah he is one of those types like zoen, hehe
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :At least I'm back up to page 11...lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :studies game mechanics and plans well
+:Zeus!Zeus@Thunder.God.Of.Awesome QUIT :Ping timeout: 121 seconds
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :right zoen
+PING :razorzedge.relic.net
+:coLdduff!human@relic-3itovp.wa.comcast.net PRIVMSG #GameReaper :hi rsm
+:rsm!ident@relic-leasde.abhsia.telus.net PRIVMSG #GameReaper :hi
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :hey coLdduff
+:Zeus!Zeus@Thunder.God.Of.Awesome JOIN :#GameReaper
+:GameReaper!Game@Reaper.net MODE #GameReaper +o Zeus
+:Anthrax!Anthrax@Epic.Winning MODE #GameReaper +v Zeus
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Still, really considering doing 1 handed Cleave now if the game's going to enable cheap mode
+:coLdduff!human@relic-3itovp.wa.comcast.net PRIVMSG #GameReaper :hi Anthrax
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ill make new char with ya zoen
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Won't be able to do near full-radius AoE damage, but at least I won't get interrupted every hit
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :just lmk when u are, if you do
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :He looks like he hasn't done any of that for D3 is what I'm getting at
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :heh
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :maybe he lost the spiriti in d2 nl pvp
+PING :razorzedge.relic.net
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :nl d2 pvp would only make it sharper. :p
+:rsm!ident@relic-leasde.abhsia.telus.net PRIVMSG #GameReaper :its snowing today
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :not rly
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :If I do any party play it'll be with voice until I get a response from GGG on how to fix my "text causing framerate bombs" issue
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :to many hackers for a gm pvp'er
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :just as many on ladder mate
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :i can do TS zoen
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :is np
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :50% less imo
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Hate losing 80% of my framerate just because of on-screen text, including chat and enemy modifiers
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :idk how to use xfire chat zoen
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :I don't use Xfire for voice, lol
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :dont think mayhem has it on her comp anyhow
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ah ok
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :I muchly disagree. What's more, on NL the hackers don't usually have any/as much of a gear advantage on top
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :well yeah, lmk if u start new
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :I probably will
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :wha?
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :there is more gear on nl than on ladder
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :yes
+:ewgola!andrew@relic-dc2.u9v.98.74.IP JOIN :#GameReaper
+:Anthrax!Anthrax@Epic.Winning MODE #GameReaper +v ewgola
+PING :razorzedge.relic.net
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :but it's flatter
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReaper :the curve - the difference between GG and just good is smaller
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Might do Templar again since Cleave is AoE and I like having a high range of attack
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :ehh, well i wouldnt know anyhow, i dont play nl, ever
+:Akatath!ident@relic-84ikpa.fios.verizon.net QUIT :Connection closed
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :im thinking a marauder again
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :slow, but im kinda liking them since playing hc
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Can get a total of +40% area of effect radius from passive nodes, I think
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :not bad
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Combine that with an increased area of effect gem when you get it and that's over 60% increased range
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :perhaps we can cross gems and stuff
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :That's what I was shooting for with Sweep anyways
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :like gems i wont use, u might
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :and vice versa
+:Zoen!zakassis@relic-o6mrgc.hr.cox.net PRIVMSG #GameReaper :Get a range so high I could hit almost anything around me regardless of where it was
+:Anthrax!Anthrax@Epic.Winning PRIVMSG #GameReaper :with cleave...thatd be hawt
+PING :razorzedge.relic.net
+:KG!KG@relic-unh.p29.168.66.IP PRIVMSG #GameReape

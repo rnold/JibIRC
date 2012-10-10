@@ -13,36 +13,19 @@ import javax.swing.JList;
  * @author Welcome
  */
 public class CreatePMController extends MouseAdapter{
-    ServerPanel irc;
+    ServerPanel server;
     
     public CreatePMController(ServerPanel irc){
-        this.irc = irc;
+        this.server = irc;
     }
     
     @Override
-    public void mouseClicked(MouseEvent me){
-        JList userList = (JList)me.getSource();
-        String channelName = (String)userList.getSelectedValue();
-        if(me.getClickCount() == 2){
-            String strippedChannelName = stripMode(channelName);
-            irc.joinPrivateMessage(strippedChannelName);
+    public void mouseClicked(MouseEvent me) {
+        if (me.getClickCount() == 2) {
+            JList userList = (JList) me.getSource();
+            User user = (User) userList.getSelectedValue();
+            server.joinPrivateMessage(user.getUsername());
         }
-        
+
     }
-    
-    private String stripMode(String userName){
-        if(hasMode(userName)){
-            return userName.substring(1);
-        }
-        return userName;
-    }
-    
-    private boolean hasMode(String userName){
-        return userName.startsWith("@") ||
-                userName.startsWith("+") ||
-                userName.startsWith("&") ||
-                userName.startsWith("%") ||
-                userName.startsWith("~");
-    }
-    
 }

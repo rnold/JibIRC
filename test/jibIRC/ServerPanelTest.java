@@ -80,24 +80,64 @@ public class ServerPanelTest {
     @Test
     public void testAddUser(){
         String channelName = "#GameReaper";
-        User user = new User("JibTest", "");
+        User user = new User("JibTest", "", "");
         ServerPanel server = new ServerPanel(null, null, channelName, null);
         Channel channel = new PublicChannel(channelName, null, null);
         server.createChannel(channel);
         server.addUser(channelName, user);
-        assertTrue(channel.userExists(user.getUsername()));
+        assertTrue(channel.userExists(user));
     }
     
     @Test
     public void testRemoveUser(){
         String channelName = "#GameReaper";
-        User user = new User("JibTest", "");
+        User user = new User("JibTest", "", "");
         ServerPanel server = new ServerPanel(null, null, channelName, null);
         Channel channel = new PublicChannel(channelName, null, null);
         server.createChannel(channel);
         server.addUser(channelName, user);
-        server.removeUser(channelName, user.getUsername());
-        assertFalse(channel.userExists(user.getUsername()));
+        server.removeUser(channelName, user);
+        assertFalse(channel.userExists(user));
+    }
+    
+    @Test
+    public void testRemoveUserFromAllChannels(){
+        //setup
+        User user = new User("JibTest", "", "");
+        ServerPanel server = new ServerPanel(null, null, null, null);
+        Channel hiChannel = new PublicChannel("#hi", null, null);
+        server.joinChannel(hiChannel);
+        Channel byeChannel = new PublicChannel("#bye", null, null);
+        server.joinChannel(byeChannel);
+        server.addUser("#hi", user);
+        server.addUser("#bye", user);
+        assertTrue(hiChannel.userExists(user));
+        assertTrue(byeChannel.userExists(user));
+        //test
+        server.removeUserFromAllChannels(user);
+        assertFalse(hiChannel.userExists(user));
+        assertFalse(byeChannel.userExists(user));
+    }
+    
+    @Test
+    public void testChangeUserNick(){
+        User user = new User("JibTest", "", "");
+        ServerPanel server = new ServerPanel(null, null, null, null);
+        Channel hiChannel = new PublicChannel("#hi", null, null);
+        server.joinChannel(hiChannel);
+        Channel byeChannel = new PublicChannel("#bye", null, null);
+        server.joinChannel(byeChannel);
+        server.addUser("#hi", user);
+        server.addUser("#bye", user);
+        assertTrue(hiChannel.userExists(user));
+        assertTrue(byeChannel.userExists(user));
+        //test
+        server.changeNickForAllChannels(user, "fernando");
+        assertFalse(hiChannel.userExists(user));
+        assertFalse(byeChannel.userExists(user));
+        User changedUser = new User("fernando", "", "+");
+        assertTrue(hiChannel.userExists(changedUser));
+        assertTrue(byeChannel.userExists(changedUser));
     }
     
     @Test

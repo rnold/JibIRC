@@ -13,13 +13,9 @@ import javax.swing.JButton;
  * @author Welcome
  */
 public class LeavePrivateMessageController implements ActionListener{
-    PrivateMessage pm;
-    IRCHandler handler;
     ServerPanel irc;
     
-    public LeavePrivateMessageController(PrivateMessage pm, IRCHandler handler, ServerPanel irc){
-        this.pm = pm;
-        this.handler = handler;
+    public LeavePrivateMessageController(ServerPanel irc){
         this.irc = irc;
     }
     
