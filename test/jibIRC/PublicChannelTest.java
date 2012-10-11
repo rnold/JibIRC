@@ -36,8 +36,9 @@ public class PublicChannelTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of addMessage method, of class PublicChannel.
-     */
+    @Test
+    public void testNothing(){
+        
+    }
 
 }

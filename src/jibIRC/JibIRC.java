@@ -231,6 +231,14 @@ public class JibIRC extends javax.swing.JFrame {
         this.iServer = server;
     }
     
+    public void leaveServer(ServerPanel server){
+        serverPanel.remove(server);
+        getContentPane().remove(serverPanel);
+        getContentPane().add(loginPanel);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+    
     public boolean serverIsAdded(ServerPanel server){
         return this.iServer == server;
     }

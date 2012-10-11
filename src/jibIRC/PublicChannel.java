@@ -109,6 +109,11 @@ public class PublicChannel extends Channel{
         messageBox.setLineWrap(true);
         messageBox.setRows(5);
         messageBox.setWrapStyleWord(true);
+        messageBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                messageBoxMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(messageBox);
 
         currentChannelUsers = new javax.swing.DefaultListModel();
@@ -142,6 +147,13 @@ public class PublicChannel extends Channel{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void messageBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messageBoxMouseClicked
+        if(evt.getButton() == java.awt.event.MouseEvent.BUTTON2){
+            
+        }
+    }//GEN-LAST:event_messageBoxMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     public javax.swing.JScrollPane jScrollPane1;

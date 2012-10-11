@@ -71,7 +71,7 @@ public class ServerMessageController implements ActionListener {
                 } else if(serverMessage.isChannelMode()){
                     changeUsersMode(serverMessage);
                 } else if(serverMessage.isNickChange()){
-                    //changeNick(serverMessage);
+                    changeNick(serverMessage);
                 }
             }
         }
@@ -105,5 +105,6 @@ public class ServerMessageController implements ActionListener {
     public void changeNick(ServerMessage serverMessage){
         User user = User.getUserFromPrefix(serverMessage.getPrefix());
         String newUsername = serverMessage.getParameters().get(0);
+        server.changeNickForAllChannels(user, newUsername);
     }
 }
