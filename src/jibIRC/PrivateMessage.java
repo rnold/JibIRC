@@ -25,6 +25,7 @@ public class PrivateMessage extends Channel{
         this.irc = irc;
         initComponents();
         jButton1.addActionListener(new LeavePrivateMessageController(irc));
+        messageBox.addMouseListener(new RightClickMenuCreator(messageBox));
         messageBox.setEditable(false);
     }
 

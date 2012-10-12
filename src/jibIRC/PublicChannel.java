@@ -23,6 +23,7 @@ public class PublicChannel extends Channel{
         initComponents();
         jButton1.addActionListener(new LeavePublicChannelController(this, handler));
         usersList.addMouseListener(new CreatePMController(irc));
+        messageBox.addMouseListener(new RightClickMenuCreator(messageBox));
         messageBox.setEditable(false);
     }
 
@@ -99,22 +100,11 @@ public class PublicChannel extends Channel{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        messageBox = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         usersList = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
-
-        messageBox.setColumns(20);
-        messageBox.setLineWrap(true);
-        messageBox.setRows(5);
-        messageBox.setWrapStyleWord(true);
-        messageBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                messageBoxMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(messageBox);
+        jScrollPane3 = new javax.swing.JScrollPane();
+        messageBox = new javax.swing.JTextArea();
 
         currentChannelUsers = new javax.swing.DefaultListModel();
         usersList.setModel(currentChannelUsers);
@@ -122,13 +112,18 @@ public class PublicChannel extends Channel{
 
         jButton1.setText("Leave Channel " + channelName);
 
+        messageBox.setColumns(20);
+        messageBox.setRows(5);
+        jScrollPane3.setViewportView(messageBox);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -139,26 +134,20 @@ public class PublicChannel extends Channel{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void messageBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messageBoxMouseClicked
-        if(evt.getButton() == java.awt.event.MouseEvent.BUTTON2){
-            
-        }
-    }//GEN-LAST:event_messageBoxMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTextArea messageBox;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea messageBox;
     public javax.swing.JList usersList;
     // End of variables declaration//GEN-END:variables
 }
